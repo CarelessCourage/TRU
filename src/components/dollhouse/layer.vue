@@ -3,24 +3,23 @@ import { computed, watch, ref } from 'vue'
 const props = defineProps({
   tilt: Number,
   roll: Number,
-  depth: Number,
-  blur: Number,
+  settings: Object,
 })
 
-function clamp(value, min = 0, max = 10) {
+const getDepth = ref(props.settings.depth)
+const absRoll = computed(() => clamp(props.roll, 0.4));
+
+function clamp(value, min = 0, max = 5) {
   return Math.max(min, Math.min(max, value))
 }
 
-let blurMod = ref(props.blur);
+let blurMod = ref(props.settings.blur);
 watch(() => props.roll, (val) => {
   let returned = val * 100;
-  if(props.blur < 0) {
-    returned = 40 - Math.abs(returned);
-  } 
+  if(props.settings.blur < 0) returned = 40 - Math.abs(returned);
   blurMod.value = clamp(returned).toFixed(2) + 'px';
 })
 
-const absRoll = computed(() => clamp(props.roll, 0.4));
 </script>
 
 <template>
@@ -37,8 +36,8 @@ const absRoll = computed(() => clamp(props.roll, 0.4));
     transform:
       scale(2)
       translateZ(calc(200px))
-      translateX(calc(v-bind(tilt) * calc(v-bind(depth) * 1px)))
-      translateY(calc(v-bind(roll) * calc(v-bind(depth) * -1px)));
+      translateX(calc(v-bind(tilt) * calc(v-bind(getDepth) * 1px)))
+      translateY(calc(v-bind(roll) * calc(v-bind(getDepth) * -1px)));
 
     img {
       width: 100%;

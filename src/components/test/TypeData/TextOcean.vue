@@ -1,7 +1,6 @@
 <script setup>
 import {onMounted} from "vue"
 
-
 //fetch star wars characters from api
 const fetchCharacters = async () => {
   const response = await fetch("https://swapi.dev/api/people/");
