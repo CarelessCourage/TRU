@@ -7,6 +7,8 @@
   </template>
 
 <style lang="scss">
+@import "./css";
+
 @font-face {
   font-family: "Atacama";
   src: url("./assets/fonts/AtacamaVF.ttf") format("truetype");
@@ -26,7 +28,7 @@
 :root {
   --background: rgb(244, 252, 246);
   --foreground: #2c3e50;
-  --flavor: #2c3e50;
+  --flavor: #c7fd62;
   --shade: rgb(219, 219, 219);
 }
 

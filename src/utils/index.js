@@ -1,25 +1,11 @@
-import { onMounted, ref } from "vue"
-
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
-function scrollTrigger(trigger, start = "top bottom") {
-  let scroll = ref(0);
-  onMounted(() => {
-    gsap.to(scroll, {
-      scrollTrigger: {
-        trigger: trigger,
-        start: start,
-        end: "bottom center",
-        scrub: true,
-        markers: false
-      },
-      value: 1000,
-    });
-  })
-  return { scroll };
+//is number between two numbers
+export function between(num, min, max) {
+  return num > min && num < max;
 }
 
-export default scrollTrigger;
+//clamp function
+export function clamp(num, min, max) {
+  return num <= min ? min : num >= max ? max : num;
+}
+
+export default clamp;

@@ -50,15 +50,16 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   animation: rotate 50s infinite;
-}
 
-p {
-  width: 15rem;
-  position: absolute;
-  left: 50%; /* Position X halfway in */
-  color: var(--background);
-  transform-origin: left;
-  //background-color: blue;
+  p {
+    width: 15rem;
+    position: absolute;
+    left: 50%; /* Position X halfway in */
+    color: var(--background);
+    transform-origin: left;
+    //background-color: blue;
+  }
+  
 }
 
 @keyframes rotate {
