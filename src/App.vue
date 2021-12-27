@@ -38,11 +38,7 @@
   font-family: "Atacama", "Roboto VF", sans-serif;
   font-variation-settings: "wght" 400, "wdth" 300, "CNTR" 0;
   color: var(--foreground);
-  //padding-top: 30vh;
-
-  //width: 60em;
-  //max-width: 100vw;
-  //margin: auto;
+  overflow-x: hidden;
 }
 
 html {

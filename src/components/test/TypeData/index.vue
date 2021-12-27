@@ -1,5 +1,5 @@
 <script setup>
-import TextOcean from './TextOcean.vue'
+import TextOcean from '../../text-ocean/TextOcean.vue'
 import Test from './test.vue'
 </script>
 

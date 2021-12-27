@@ -2,33 +2,11 @@
 import { ref } from "vue"
 import { useParallax } from '@vueuse/core'
 
-import leaves from '../../assets/dollhouse/leaves.png'
-import foreground from '../../assets/dollhouse/foreground.png'
-import background from '../../assets/dollhouse/gate.png'
-
 import Layer from './layer.vue'
+import house from "./houses"
 
 const paralaxSurface = ref(null)
 const { tilt, roll } = useParallax(paralaxSurface)
-
-const layers = [
-  {
-    image: background,
-    depth: 50,
-    blur: 5
-  },
-  {
-    image: foreground,
-    depth: 75,
-    blur: -10
-  },
-  {
-    image: leaves,
-    depth: 100,
-    blur: -10
-  }
-]
-
 </script>
 
 <template>
@@ -36,7 +14,7 @@ const layers = [
     <div class="spread" ref="paralaxSurface"></div>
     <div class="overflow">
       <Layer
-        v-for="(layer, index) in layers"
+        v-for="(layer, index) in house.chinese"
         :key="index"
         :tilt="tilt"
         :roll="roll"
@@ -71,7 +49,6 @@ const layers = [
 .dollhouse {
   --size: 350px;
   position: relative;
-  z-index: -1;
   width: var(--size);
   height: var(--size);
   padding: 2em;

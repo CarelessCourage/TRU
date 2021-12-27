@@ -1,5 +1,5 @@
 <script setup>
-import { defineExpose, ref } from 'vue'
+import { ref } from 'vue'
 import utils from "svg-path-reverse"
 
 const props = defineProps({

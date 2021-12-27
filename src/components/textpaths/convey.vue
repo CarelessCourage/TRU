@@ -2,40 +2,21 @@
 import CurveBlur from "./CurveBlur.vue";
 import CurvePath from "./CurvePath.vue";
 
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { scrollPure } from "../../utils/scrollTrigger.js";
 import useInertia from "../../utils/inertia.js";
+import useDirection from "./useDirection.js";
 
 defineProps({
-  textPaths: Array
+  textPaths: Array,
+  tightness: String,
 })
 
 const svgRef = ref(null);
 const scrollMaxValue = 1100;
 const { scroll } = scrollPure(svgRef, scrollMaxValue);
 const { inertia } = useInertia(scroll, scrollMaxValue);
-
-const pathRef = ref(null);
-const pathLength = ref(null)
-
-onMounted(() => {
-  let length = pathRef.value.pathRef.getTotalLength()
-  pathLength.value = length
-});
-
-const forward = (text) => {
-  return (scroll.value - text.offset) * text.speedFactor
-}
-
-const backwards = (text) => {
-  return (pathLength.value + text.offset) - scroll.value * text.speedFactor
-}
-
-const direction = (text) => {
-  return text.forward ? 
-    forward(text) : 
-    backwards(text);
-}
+const { pathRef, direction } = useDirection(scroll);
 </script>
 
 <template>
@@ -66,6 +47,7 @@ const direction = (text) => {
     background-color: var(--background);
 
     svg {
+      margin-bottom: v-bind(tightness);
       margin-bottom: -13%;
       transition: .1s ease-in-out;
     }

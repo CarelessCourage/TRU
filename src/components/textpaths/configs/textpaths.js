@@ -98,7 +98,38 @@ const textPaths2 = [
   }
 ]
 
+const textPaths3 = [
+  {
+    offset: 500,
+    speedFactor: 1.2,
+    blurMin: 0,
+    blurFactor: 2,
+    forward: true,
+    path: paths[5],
+    text: "this idds a text you shit"
+  },
+  {
+    offset: 600,
+    speedFactor: 1.5,
+    blurMin: 3,
+    blurFactor: 5,
+    forward: true,
+    path: paths[5],
+    text: "* Keyframers really knddow animation."
+  },
+  {
+    offset: 700,
+    speedFactor: 1.7,
+    blurMin: 1,
+    blurFactor: 3,
+    forward: true,
+    path: paths[5],
+    text: "thddis is a text you shit"
+  }
+]
+
 export default [
   textPaths1,
-  textPaths2
+  textPaths2,
+  textPaths3
 ]

@@ -1,26 +1,22 @@
 <script setup>
 import Dollhouse from '../components/dollhouse/dollhouse.vue';
-import Structure from "../components/test/structure.vue";
 import Time from "../components/moons/time.vue"
 import Dawn from "../components/moons/dawn.vue"
 import Convey from "../components/textpaths/convey.vue"
+import TextOcean from "../components/text-ocean/TextOcean.vue"
 
 import textPaths from "../components/textpaths/configs/textpaths";
-
-import HelloWorld from "../components/test/HelloWorld.vue"
 </script>
 
 <template>
 <div class="home">
-  <Dollhouse v-if="false"/>
-  <Structure v-if="false"/>
-  <HelloWorld msg="lolkay" v-if="false"/>
+  <TextOcean>Type Structure. The DNA of human language</TextOcean>
 
-  <div v-if="true" class="empty"></div>
+  <Dollhouse v-if="true"/>
 
-  <div class="invert"></div>
-  <Convey :textPaths="textPaths[1]"/>
-  <Convey :textPaths="textPaths[0]"/>
+  <Convey :textPaths="textPaths[2]" tightness="-13%"/>
+  <Convey :textPaths="textPaths[1]" tightness="-13%"/>
+  <Convey :textPaths="textPaths[0]" tightness="-13%"/>
   
   <div v-if="true">
     <Time :circleIn="true">
@@ -39,26 +35,8 @@ import HelloWorld from "../components/test/HelloWorld.vue"
 </template>
 
 <style lang="scss">
-.invert {
-  width: 500px;
-  height: 500px;
-  position: fixed;
-  z-index: 100;
-  top: 0px;
-  backdrop-filter: invert(100%) sepia(90%);
-  filter: blur(0px);
-  border-radius: 100%;
-  border: solid 3px var(--flavor);
-}
-
-
 .home {
   background: var(--background);
   width: 100%;
-}
-
-.empty {
-  height: 100vh;
-  background-color: var(--foreground);
 }
 </style>
