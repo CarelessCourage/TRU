@@ -1,0 +1,23 @@
+.splitSlide {
+  --del: 0s;
+  overflow: hidden;
+  .char {
+    --delay: calc(var(--char-index) * 0.1s + var(--del));
+    display: inline-block;
+    animation: pulsex 0.8s var(--delay) backwards;
+  }
+}
+
+@keyframes pulsex {
+  0% {
+    opacity: 0;
+    transform: translateY(8rem);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}

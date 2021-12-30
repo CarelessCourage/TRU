@@ -2,6 +2,7 @@
 import { onMounted } from "vue";
 import useNavigation from "../components/navigation/store";
 import Split from "../utils/splitting.vue"
+import Tile from "../components/tiles/tile.vue"
 
 const { navigation } = useNavigation();
 onMounted(() => {
@@ -21,15 +22,15 @@ onMounted(() => {
           eget consectetur nisl nunc.
         </p></Split>
         <div class="newsTile">
-          <div class="tile">
-            <h3>title</h3>
-          </div>
-          <div class="tile">
-            <h3>title</h3>
-          </div>
-          <div class="tile">
-            <h3>title</h3>
-          </div>
+          <Tile class="tile">
+            <Split :delay="0.5"><h3 data-slide>Livestream - <br> june 10th</h3></Split>
+          </Tile>
+          <Tile class="tile">
+            <Split :delay="1"><h3 data-slide>Roadmap <br> for 2022</h3></Split>
+          </Tile>
+          <Tile class="tile">
+            <Split :delay="1.5"><h3 data-slide>new team <br> member</h3></Split>
+          </Tile>
         </div>
       </div>
     </div>
@@ -37,6 +38,7 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
+
 .news-wrapper {
   min-height: 100vh;
   display: flex;
@@ -52,22 +54,12 @@ onMounted(() => {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
 
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+  
   width: 100%;
   margin-top: 3rem;
   //background-color:blue;
-  
-  .tile {
-    background: var(--flavor);
-    background-image: var(--gradient-13);
-    border-radius: 0.4rem;
-    height: 250px;
-    padding: 2em;
-    display: flex;
-    align-items: end;
-
-    h3 {
-      color: var(--background);
-    }
-  }
 }
 </style>

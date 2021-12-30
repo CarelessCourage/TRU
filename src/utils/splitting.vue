@@ -6,24 +6,6 @@ import Splitting from "splitting";
 const props = defineProps({
   delay: Number
 })
-  
-function splitLines(delay = 0) {
-  const splitLines = Splitting({target: "[data-line]", by: 'lines' });
-  splitLines[0].lines.forEach((line, index) => {
-    line.forEach((word) => {
-      console.log(delay);
-      let d =  (index / 5) + 1
-      gsap.fromTo(word, {
-        autoAlpha: 0,
-      },
-      {
-        autoAlpha: 1,
-        duration: 1.2,
-        delay: d,
-      });
-    })
-  });
-}
 
 onMounted(() => {
   Splitting({target: "[data-slide]"});
@@ -55,10 +37,19 @@ onMounted(() => {
 
 <style lang="scss">
 .splitting h1, 
-.splitting h2 {
-  overflow: hidden;
+.splitting h2,
+.splitting h3 {
+  .word {
+    //display: inline-block;
+    //background: red;
+    overflow: hidden;
+    clip-path: polygon(0 0, 150% 0, 150% 100%, 0% 100%);
+    //clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
   .char {
-    --delay: calc(var(--char-index) * 0.1s + calc(v-bind(delay) * 1s));
+    //background: red;
+    //clip-path: circle(80%);
+    --delay: calc(var(--char-index) * 0.05s + calc(v-bind(delay) * 1s));
     display: inline-block;
     animation: pulse 0.8s var(--delay) backwards;
   }
@@ -66,9 +57,14 @@ onMounted(() => {
 
 @keyframes pulse {
   0% {
+    opacity: 0;
     transform: translateY(8rem);
   }
+  50% {
+    opacity: 0;
+  }
   100% {
+    opacity: 1;
     transform: translateY(0rem);
   }
 }
