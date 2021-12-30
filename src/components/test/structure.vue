@@ -2,7 +2,7 @@
 <div class="wrapper paragraphs">
   <h1>Thjis is a title</h1>
   <h3>The type which, through any arbitrary warping of design or excess</h3>
-  <p><span>In contemporary use,</span> the practice and study of 
+  <p class="bold"><span>In contemporary use,</span> the practice and study of 
     typography include a broad range, covering all aspects of letter 
     design and application, both mechanical (typesetting, type design, 
     and typefaces) and manual (handwriting and calligraphy).

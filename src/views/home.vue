@@ -1,42 +1,73 @@
 <script setup>
-import Dollhouse from '../components/dollhouse/dollhouse.vue';
-import Time from "../components/moons/time.vue"
-import Dawn from "../components/moons/dawn.vue"
-import Convey from "../components/textpaths/convey.vue"
-import TextOcean from "../components/text-ocean/TextOcean.vue"
+import { onMounted } from "vue";
+import useNavigation from "../components/navigation/store";
+import Split from "../utils/splitting.vue"
 
-import textPaths from "../components/textpaths/configs/textpaths";
+const { navigation } = useNavigation();
+onMounted(() => {
+  navigation.value = false; 
+})
 </script>
 
 <template>
-<div class="home">
-  <TextOcean>Type Structure. The DNA of human language</TextOcean>
-
-  <Dollhouse v-if="true"/>
-
-  <Convey :textPaths="textPaths[2]" tightness="-13%"/>
-  <Convey :textPaths="textPaths[1]" tightness="-13%"/>
-  <Convey :textPaths="textPaths[0]" tightness="-13%"/>
-  
-  <div v-if="true">
-    <Time :circleIn="true">
-      <h1 class="element">...<br> evolves civilisation <br>...</h1>
-    </Time>
-    <Time :circleIn="false">
-      <h1 class="element">...<br> evolves civilisation <br>...</h1>
-    </Time>
-    <Dawn>
-      <h1 class="element">...<br> corrodes mountains <br>...</h1>
-    </Dawn>
+  <div class="home body">
+    <div class="news-wrapper">
+      <div class="news">
+        <Split :delay="0"><h1 data-slide>News</h1></Split>
+        <Split :delay="1"><p data-line>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Pellentesque euismod, nisi eu consectetur consectetur,
+          nisl nunc consectetur nisl, eget consectetur nisl nunc
+          eget consectetur nisl nunc.
+        </p></Split>
+        <div class="newsTile">
+          <div class="tile">
+            <h3>title</h3>
+          </div>
+          <div class="tile">
+            <h3>title</h3>
+          </div>
+          <div class="tile">
+            <h3>title</h3>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div v-if="true" class="empty"></div>
-</div>
 </template>
 
 <style lang="scss">
-.home {
-  background: var(--background);
+.news-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.news {
   width: 100%;
+}
+
+.newsTile {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+
+  width: 100%;
+  margin-top: 3rem;
+  //background-color:blue;
+  
+  .tile {
+    background: var(--flavor);
+    background-image: var(--gradient-13);
+    border-radius: 0.4rem;
+    height: 250px;
+    padding: 2em;
+    display: flex;
+    align-items: end;
+
+    h3 {
+      color: var(--background);
+    }
+  }
 }
 </style>

@@ -8,7 +8,7 @@ useFitt("#fitty");
 <template>
   <div class="componentWrapper">
     <div id="oceanWrapper">
-      <div 
+      <div
         v-for="(x, index) in 40"
         class="slotText"
         :key="index"

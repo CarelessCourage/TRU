@@ -1,12 +1,14 @@
   <script setup>
-  import Home from './views/home.vue';
+  import Navigation from "./components/navigation/navigation.vue";
   </script>
 
   <template>
-    <Home/>
+    <Navigation/>
+    <router-view />
   </template>
 
 <style lang="scss">
+@import 'open-props/gradients';
 @import "./css";
 
 @font-face {
@@ -28,8 +30,10 @@
 :root {
   --background: rgb(244, 252, 246);
   --foreground: #2c3e50;
-  --flavor: #c7fd62;
+  --flavor: #edfd62;
   --shade: rgb(219, 219, 219);
+
+  --margin: 1rem;
 }
 
 #app {
@@ -52,5 +56,30 @@ body {
 * {
   box-sizing: border-box;
   margin: 0px;
+}
+
+a {
+  position: relative;
+  color: var(--foreground);
+  text-decoration: none;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 3rem;
+    left: 0px;
+    z-index: -1;
+    background: var(--flavor);
+    width: 0%;
+    height: 2rem;
+    transition: 0.4s ease-in-out;
+  }
+  &:hover::before {
+    width: 5em;
+    opacity: 0.4;
+  }
+
+  &.router-link-active::before {
+    width: 20em;
+  }
 }
 </style>
