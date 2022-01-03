@@ -1,5 +1,29 @@
+<script setup>
+ import router from "../../router"
+import { ref, watch } from 'vue'
+import { changeDims, limbo, innerText, duration } from "./utils.js"
+
+const banner = ref(null)
+watch(banner, () => {
+  changeDims(banner.value)
+})
+
+function toggleLimbo(e) {
+  innerText.value = e.path[1].innerText
+  limbo.value = !limbo.value
+  setTimeout(() => {
+    router.push(`/artickle`)
+  }, duration.value * 1000)
+}
+</script>
+
 <template>
-  <div class="tile">
+  <div
+    ref="banner" 
+    class="tile"
+    @click="toggleLimbo"
+    @mouseenter="changeDims"
+  >
     <slot></slot>
     <div class="gradient"></div>
     <div class="yellow"></div>
@@ -7,53 +31,61 @@
 </template>
 
 <style lang="scss">
-  .tile {
+  //tile
+  div.tile {
     border-radius: 0.4rem;
     height: 250px;
     padding: 2em;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    //background: var(--flavor);
-    position: relative;
     overflow: hidden;
-  
+    position: relative;
     cursor: pointer;
+  }
 
+  //Gradient
+  div.tile {
+    .gradient {
+      border-radius: 0.4rem;
+    }
+
+    &:hover .gradient {
+      opacity: 1;
+    }
+
+    &:active .gradient {
+      transform: scale(1.5);
+      transition: 0.2s;
+    }
+  }
+
+  //Text
+  div.tile {
     h3 {
       transition: 0.8s;
       position: relative;
       z-index: 2;
     }
 
-    &:hover {
-      .gradient {
-        //top: 100%;
-        opacity: 1;
-      }
-      h3 {
-        color: var(--background);
-      }
+    &:hover h3 {
+      color: var(--background);
+    }
+
+    &:active h3 {
+      font-variation-settings: "wght"400, "wdth" 40, "CNTR" 60;
+      transition: 0.2s;
     }
   }
 
-  .gradient {
-    opacity: 0;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle at 50% 100%,black,var(--foreground),#0075c3,#fff3c7);
-    transition: 0.8s;
-    transform: scale(1);
-  }
-
+  //Background
   .yellow {
+    border-radius: 0.4rem;
     position: absolute;
     z-index: 0;
-    top: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     transition: 0.8s;
@@ -70,13 +102,8 @@
     animation-delay: 0.8s;
   }
 
-
   @keyframes slideup {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(0%);
-    }
+    0% {height: 0;}
+    100% {height: 100%;}
   }
   </style>

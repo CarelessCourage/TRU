@@ -1,11 +1,13 @@
-  <script setup>
-  import Navigation from "./components/navigation/navigation.vue";
-  </script>
+<script setup>
+import Limbo from "./components/tiles/limbo.vue"
+import Navigation from "./components/navigation/navigation.vue";
+</script>
 
-  <template>
-    <Navigation/>
-    <router-view />
-  </template>
+<template>
+  <Navigation/>
+  <router-view />
+  <Limbo v-if="true"/>
+</template>
 
 <style lang="scss">
 @import 'open-props/gradients';
@@ -39,14 +41,17 @@
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Atacama", "Roboto VF", sans-serif;
-  font-variation-settings: "wght" 400, "wdth" 300, "CNTR" 0;
-  color: var(--foreground);
   overflow-x: hidden;
 }
 
 html {
+  font-family: "Atacama", "Roboto VF", sans-serif;
+  font-variation-settings: "wght" 400, "wdth" 300, "CNTR" 0;
+  color: var(--foreground);
   background: var(--background);
+  max-width: 100vw;
+  overflow-x: hidden;
+  //filter: invert(1) hue-rotate(90deg);  
 }
 
 body {
@@ -62,7 +67,10 @@ a {
   position: relative;
   color: var(--foreground);
   text-decoration: none;
-  &::before {
+}
+
+.navigation a {
+   &::before {
     content: "";
     position: absolute;
     top: 3rem;
@@ -82,4 +90,16 @@ a {
     width: 20em;
   }
 }
+
+  .gradient {
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 50% 100%,black,var(--foreground),#0075c3,#fff3c7);
+    transition: 0.8s;
+    transform: scale(1);
+  }
 </style>

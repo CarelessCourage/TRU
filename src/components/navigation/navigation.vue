@@ -72,7 +72,7 @@ onMounted(() => {
 .rainbow {
   background-color: var(--flavor);
   position: fixed;
-  z-index: 2;
+  z-index: 200000;
   top: 0;
   left: 0;
   width: 100vw;
@@ -92,7 +92,7 @@ onMounted(() => {
 .navigation {
   clip-path: circle(0px at calc(100% - 5rem) 4rem);
   position: fixed;
-  z-index: 3;
+  z-index: 300000;
   height: 100vh;
   width: 100vw;
   display: flex;

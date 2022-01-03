@@ -1,5 +1,4 @@
 <template>
-<div class="wrapper paragraphs">
   <h1>Thjis is a title</h1>
   <h3>The type which, through any arbitrary warping of design or excess</h3>
   <p class="bold"><span>In contemporary use,</span> the practice and study of 
@@ -22,13 +21,4 @@
     from clerical workers and newsletter writers to anyone self-publishing 
     materials. 
   </p>
-</div>
 </template>
-
-<style lang="scss">
-.wrapper {
-  max-width: 40em;
-  margin: auto;
-  padding: 8rem 0px 12rem;
-}
-</style>

@@ -22,14 +22,14 @@ onMounted(() => {
           eget consectetur nisl nunc.
         </p></Split>
         <div class="newsTile">
-          <Tile class="tile">
-            <Split :delay="0.5"><h3 data-slide>Livestream - <br> june 10th</h3></Split>
+          <Tile>
+            <Split :delay="0.5"><h3 data-line>Livestream - june 10th</h3></Split>
           </Tile>
-          <Tile class="tile">
-            <Split :delay="1"><h3 data-slide>Roadmap <br> for 2022</h3></Split>
+          <Tile>
+            <Split :delay="0.9"><h3 data-line>Roadmap for 2022</h3></Split>
           </Tile>
-          <Tile class="tile">
-            <Split :delay="1.5"><h3 data-slide>new team <br> member</h3></Split>
+          <Tile>
+            <Split :delay="1.2"><h3 data-line>new team member</h3></Split>
           </Tile>
         </div>
       </div>

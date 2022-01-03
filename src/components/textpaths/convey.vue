@@ -44,7 +44,10 @@ const { pathRef, direction } = useDirection(scroll);
 
     width: 100vw;
     min-height: 100vh;
-    background-color: var(--background);
+    //background-color: var(--background);
+
+    overflow-x: hidden;
+    max-width: 100vw;
 
     svg {
       margin-bottom: v-bind(tightness);

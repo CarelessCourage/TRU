@@ -28,7 +28,7 @@ defineProps({
     top: 1rem;
     right: 1rem;
     position: fixed;
-    z-index: 5;
+    z-index: 500000;
 
     height: 2rem;
     box-sizing: content-box;

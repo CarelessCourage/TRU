@@ -36,20 +36,17 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-.splitting h1, 
+.splitting h1,
 .splitting h2,
 .splitting h3 {
-  .word {
-    //display: inline-block;
-    //background: red;
-    overflow: hidden;
-    clip-path: polygon(0 0, 150% 0, 150% 100%, 0% 100%);
-    //clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
   .char {
-    //background: red;
-    //clip-path: circle(80%);
     --delay: calc(var(--char-index) * 0.05s + calc(v-bind(delay) * 1s));
+    display: inline-block;
+    animation: pulse 0.8s var(--delay) backwards;
+  }
+
+  .word {
+     --delay: calc(var(--word-index) * 0.05s + calc(v-bind(delay) * 1s));
     display: inline-block;
     animation: pulse 0.8s var(--delay) backwards;
   }
