@@ -1,32 +1,53 @@
 <script setup>
 import { onMounted, ref } from "vue";
 
-
-import Convey from "../components/textpaths/convey.vue"
 import Structure from '../components/test/structure.vue';
 import useNavigation from "../components/navigation/store";
 
+import Convey from "../components/textpaths/convey.vue"
 import textPaths from "../components/textpaths/configs/textpaths";
 import { changeDims, limbo, duration } from "../components/tiles/utils.js";
 
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
 const banner = ref(null)
+
+const radius = ref(0);
 
 const { navigation } = useNavigation();
 onMounted(() => {
   navigation.value = false;
   changeDims(banner.value)
 
+  gsap.to(window, {duration: 0, scrollTo: "0"});
+  setTimeout(() => {
+    gsap.to(window, {duration: 1, scrollTo: "400"});
+  }, duration.value * 500)
+
   setTimeout(() => {
     limbo.value = true
   }, duration.value * 1000)
-  
+
+  gsap.to(radius, {
+    scrollTrigger: {
+      trigger: ".wrapper",
+      start: 'top bottom',
+      end: '50px top',
+      scrub: true,
+    },
+     value: 1000,
+  });
 })
 </script>
 
 <template>
 <div class="article">
   <div class="textPath">
-    <Convey :textPaths="textPaths[0]" tightness="-13%"/>
+    <Convey :textPaths="textPaths[1]" tightness="-13%"/>
   </div>
   <div class="banner" ref="banner">
     <div class="gradient"></div>
@@ -65,9 +86,25 @@ onMounted(() => {
   //filter: blur(200px);
 }
 
+@keyframes animxx {
+  0% {
+    padding-top: 100vh;
+  }
+  100% {
+    padding-top: 15rem;
+  }
+}
+
 .article {
   background: var(--background);
   width: 100%;
+  padding-top: 15rem;
+
+  //animation: animxx 1.2s backwards ease-in-out;
+  //margin-top: 15rem;
+  padding-top: 100vh;
+  //transform: translateY(-50%);
+  
   .body {
     display: flex;
     justify-content: center;
@@ -82,28 +119,27 @@ onMounted(() => {
     flex-direction: column;
 
     position: relative;
-    z-index: 1000;
+    z-index: 100000;
     padding-top: 20rem;
     background: var(--background);
 
-
-    filter: blur(22px);
-    --round: 70rem;
+    //filter: blur(22px);
+    --round: calc(v-bind(radius) * 1px);
     border-radius: var(--round) var(--round) 0px 0px;
 
     animation: anim 1.2s backwards ease-in-out;
-    transform: translateY(-50%);
+    //margin-top: 15rem;
+    padding-top: 15rem;
+    //transform: translateY(-50%);
   }
 }
 
 @keyframes anim {
   0% {
     border-radius: 0px 0px 0px 0px;
-    transform: translate(0em);
   }
   100% {
     border-radius: 70rem 70rem 0px 0px;
-    transform: translateY(-50%);
   }
 }
 
@@ -152,7 +188,9 @@ onMounted(() => {
   height: 100vh;
   background: var(--background);
   background: var(--flavor);
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   .gradient {
     //opacity: 1;
     animation: upeer 1.2s backwards ease-in-out;

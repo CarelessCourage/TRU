@@ -91,15 +91,15 @@ a {
   }
 }
 
-  .gradient {
-    opacity: 0;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle at 50% 100%,black,var(--foreground),#0075c3,#fff3c7);
-    transition: 0.8s;
-    transform: scale(1);
-  }
+.gradient {
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 50% 100%,black,var(--foreground),#0075c3,#fff3c7);
+  transition: 0.8s;
+  transform: scale(1);
+}
 </style>

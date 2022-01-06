@@ -1,8 +1,8 @@
 <script setup>
 import {ref} from "vue";
 
-import Scrollcircle from "./scrollcircle.vue";
-import Radialtype from "./radialtype.vue";
+import Scrollcircle from "./utils/scrollcircle.vue";
+import Radialtype from "./utils/radialtype.vue";
 import scrollTrigger from "../../utils/scrollTrigger.js"
 
 let targetRef = ref(null)

@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { gsap } from "gsap";
 import Splitting from "splitting";
 
@@ -7,47 +7,47 @@ const props = defineProps({
   delay: Number
 })
 
+const splitting = ref(null)
+
 onMounted(() => {
   Splitting({target: "[data-slide]"});
+  Splitting({target: "[data-line]", by: 'lines' });
 
-  let g = 0.8
-
-  const splitLines = Splitting({target: "[data-line]", by: 'lines' });
-  splitLines[0].lines.forEach((line, index) => {
-    line.forEach((word) => {
-      let d =  (index / 5) + g
-      gsap.fromTo(word, {
-        autoAlpha: 0,
-      },
-      {
-        autoAlpha: 1,
-        duration: 1.2,
-        delay: d,
-      });
-    })
-  });
+  gsap.from(splitting.value, { scrollTrigger: {
+    trigger: splitting.value,
+    start: 'top bottom',
+    end: 'bottom top',
+    toggleClass: 'enable',
+    markers: false
+  }});
 })
 </script>
 
 <template>
-  <div class="splitting">
+  <div class="splitting" ref="splitting">
     <slot></slot>
   </div>
 </template>
 
 <style lang="scss">
-.splitting h1,
-.splitting h2,
-.splitting h3 {
+.splitting {
   .char {
     --delay: calc(var(--char-index) * 0.05s + calc(v-bind(delay) * 1s));
     display: inline-block;
-    animation: pulse 0.8s var(--delay) backwards;
   }
 
   .word {
      --delay: calc(var(--word-index) * 0.05s + calc(v-bind(delay) * 1s));
     display: inline-block;
+  }
+}
+
+.enable.splitting {
+   .char {
+    animation: pulse 0.8s var(--delay) backwards;
+  }
+
+  .word {
     animation: pulse 0.8s var(--delay) backwards;
   }
 }
@@ -55,9 +55,9 @@ onMounted(() => {
 @keyframes pulse {
   0% {
     opacity: 0;
-    transform: translateY(8rem);
+    transform: translateY(3rem);
   }
-  50% {
+  30% {
     opacity: 0;
   }
   100% {

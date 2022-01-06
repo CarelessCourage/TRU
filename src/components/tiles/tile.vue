@@ -1,7 +1,12 @@
 <script setup>
  import router from "../../router"
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
+import { gsap } from "gsap";
 import { changeDims, limbo, innerText, duration } from "./utils.js"
+
+const props = defineProps({
+  path: String
+})
 
 const banner = ref(null)
 watch(banner, () => {
@@ -12,9 +17,21 @@ function toggleLimbo(e) {
   innerText.value = e.path[1].innerText
   limbo.value = !limbo.value
   setTimeout(() => {
-    router.push(`/artickle`)
+    router.push(props.path)
   }, duration.value * 1000)
 }
+
+const yellow = ref(null)
+
+onMounted(() => {
+  gsap.from(yellow.value, { scrollTrigger: {
+    trigger: yellow.value,
+    start: 'top bottom',
+    end: 'bottom top',
+    toggleClass: 'enable',
+    markers: false
+  }});
+})
 </script>
 
 <template>
@@ -26,7 +43,7 @@ function toggleLimbo(e) {
   >
     <slot></slot>
     <div class="gradient"></div>
-    <div class="yellow"></div>
+    <div class="yellow" ref="yellow"></div>
   </div>
 </template>
 
@@ -90,8 +107,10 @@ function toggleLimbo(e) {
     height: 100%;
     transition: 0.8s;
     background: var(--flavor);
-    animation: slideup 0.8s backwards ease-in-out;
     animation-delay: 0s;
+    &.enable {
+      animation: slideup 0.8s backwards ease-in-out;
+    }
   }
 
   .tile:nth-child(2) .yellow {

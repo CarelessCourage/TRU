@@ -23,15 +23,16 @@ export function scrollTrigger(trigger, start = "center center") {
   return { scroll };
 }
 
-export function scrollPure(trigger, value = 1100, start = "20% center") {
+export function scrollPure(trigger, value = 1100, scoped = { start: "top", end: "bottom" }) {
   let scroll = ref(0);
   onMounted(() => {
     let target = trigger.value
+    console.log("target: ", target);
     gsap.to(scroll, {
       scrollTrigger: {
         trigger: target,
-        start: start,
-        end: "bottom center",
+        start: scoped.start +  " center",
+        end: scoped.end + " center",
         scrub: true,
         markers: false
       },

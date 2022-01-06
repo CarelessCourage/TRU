@@ -32,4 +32,8 @@ path {
   stroke: none;
   stroke-miterlimit: 10;
 }
+
+textPath {
+  fill: var(--foreground);
+}
 </style>

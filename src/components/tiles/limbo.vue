@@ -25,7 +25,7 @@ const {width, height, left, top} = toRefs(tileDims)
     --height: calc(v-bind(height) * 1px);
 
     position: fixed;
-    z-index: 100;
+    z-index: 10000;
     top: 0;
     left: 0;
     width: 100%;
@@ -90,7 +90,7 @@ const {width, height, left, top} = toRefs(tileDims)
       opacity: 0;
       transform: translate(-50%,-50%) scale(0);
     }
-    5% {opacity: 1;}
+    1% {opacity: 1;}
     30% {
       transform: translate(-50%,-50%) scale(23);
     }
