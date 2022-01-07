@@ -25,6 +25,7 @@ onMounted(() => {
   gsap.to(window, {duration: 0, scrollTo: "0"});
   setTimeout(() => {
     gsap.to(window, {duration: 1, scrollTo: "400"});
+    ScrollTrigger.refresh();
   }, duration.value * 500)
 
   gsap.to(radius, {
@@ -55,7 +56,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="anotherTileWrapper">
-      <div class="content body">
+      <div class="content body" v-if="true">
         <div class="anotherTile">
           <Tile path="/info">
             <Split :delay="0.5">
@@ -64,7 +65,7 @@ onMounted(() => {
           </Tile>
         </div>
       </div>
-      <div class="textpathtesttwo">
+      <div class="textpathtesttwo" v-if="true">
         <Convey :textPaths="textPaths[2]" tightness="-20%" :scoped="{ start: '-30%', end: '30%' }"/>
       </div>
       <div class="content body">

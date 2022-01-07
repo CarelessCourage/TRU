@@ -42,6 +42,8 @@ import Navigation from "./components/navigation/navigation.vue";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100vw;
+  //min-width: 101vw;
 }
 
 html {

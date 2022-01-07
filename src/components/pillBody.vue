@@ -1,0 +1,83 @@
+<script setup>
+import { onMounted, ref } from "vue";
+
+import { duration } from "../components/tiles/utils.js";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+const radius = ref(0);
+onMounted(() => {
+  gsap.to(window, {duration: 0, scrollTo: "0"});
+  setTimeout(() => {
+    gsap.to(window, {duration: 1, scrollTo: "400"});
+  }, duration.value * 500)
+ 
+  gsap.to(radius, {
+    scrollTrigger: {
+      trigger: ".pillBody",
+      start: 'top bottom',
+      end: '50px top',
+      scrub: true,
+    },
+    value: 1000,
+  });
+})
+</script>
+
+<template>
+  <div class="pillBody">
+    <div class="body paragraphs">
+      <div class="content">
+        <slot></slot>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss">
+.pillBody .content {
+  position: relative;
+  z-index: 20000;
+}
+
+.pillBody  .body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pillBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  position: relative; z-index: 100000;
+  transform: scale(1);
+  padding-top: 20rem;
+  background: var(--background);
+
+  --round: calc(v-bind(radius) * 1px);
+  border-radius: var(--round) var(--round) 0px 0px;
+
+  animation: anim 1.2s backwards ease-in-out;
+  padding-top: 15rem;
+  min-height: 50rem;
+}
+
+
+@keyframes anim {
+  0% {
+    border-radius: 0px 0px 0px 0px;
+  }
+  100% {
+    border-radius: 70rem 70rem 0px 0px;
+  }
+}
+</style>

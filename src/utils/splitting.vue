@@ -24,13 +24,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="splitting" ref="splitting">
+  <div class="splitWrapper" ref="splitting">
     <slot></slot>
   </div>
 </template>
 
 <style lang="scss">
-.splitting {
+.splitWrapper {
   .char {
     --delay: calc(var(--char-index) * 0.05s + calc(v-bind(delay) * 1s));
     display: inline-block;
@@ -42,7 +42,7 @@ onMounted(() => {
   }
 }
 
-.enable.splitting {
+.enable.splitWrapper {
    .char {
     animation: pulse 0.8s var(--delay) backwards;
   }

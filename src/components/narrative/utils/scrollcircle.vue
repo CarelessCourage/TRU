@@ -10,7 +10,6 @@ function getClass() {
   let circleClass = props.circleIn ? 
     "circleIn" : 
     "circleOut"
-
   return circleClass
 }
 
@@ -38,11 +37,6 @@ defineExpose({ scrollCircle })
   --text-weight: calc(var(--scroll) * 0.9);
 }
 
-/*.variable-base.circleIn {
-  //--text-contrast: calc(90 - var(--scroll) * 0.1);
-  //--text-weight: calc(900 - var(--scroll) * 0.9);
-}*/
-
 .scrollcircle.circleOut {
   border-radius: 0 0 var(--radius) var(--radius);
   border-bottom: solid var(--background) var(--border);
@@ -61,9 +55,10 @@ defineExpose({ scrollCircle })
   justify-content: center;
   align-items: center;
 
-  width: 100vw;
   height: 100vh;
-  max-height: 100vw;
+  //max-height: 100vw;
+  //padding-top: 30rem;
+  //padding-bottom: 30rem;
 
   background-color: var(--foreground);
   color: var(--background);

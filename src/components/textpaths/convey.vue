@@ -2,10 +2,17 @@
 import CurveBlur from "./CurveBlur.vue";
 import CurvePath from "./CurvePath.vue";
 
-import { ref } from "vue";
+import { duration } from "../tiles/utils.js";
+
+import { ref, onMounted } from "vue";
 import { scrollPure } from "../../utils/scrollTrigger.js";
 import useInertia from "../../utils/inertia.js";
 import useDirection from "./useDirection.js";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps({
   textPaths: Array,
@@ -15,7 +22,21 @@ const props = defineProps({
 
 const svgRef = ref(null);
 const scrollMaxValue = 1100;
-const { scroll } = scrollPure(svgRef, scrollMaxValue, props.scoped);
+
+let scroll = ref(0);
+onMounted(() => {
+  gsap.to(scroll, {
+    scrollTrigger: {
+      trigger: svgRef.value,
+      start: props.scoped.start +  " center",
+      end: props.scoped.end + " center",
+      scrub: true,
+      markers: false
+    },
+    value: scrollMaxValue,
+  });
+})
+
 const { inertia } = useInertia(scroll, scrollMaxValue);
 const { pathRef, direction } = useDirection(scroll);
 </script>

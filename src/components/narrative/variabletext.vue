@@ -6,15 +6,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-let targetRef = ref(null)
+let variableText = ref(null)
 let scroll = ref(0);
 
 onMounted(() => {
   gsap.to(scroll, {
     scrollTrigger: {
-      trigger: targetRef.value,
-      start: "center center",
-      end: "bottom top",
+      trigger: variableText.value,
+      start: "10% 30%",
+      end: "160% 30%",
       scrub: true,
       markers: false
     },
@@ -24,27 +24,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="sticky" ref="targetRef">
+  <div class="variableText" ref="variableText">
     <slot></slot>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.sticky {
+<style lang="scss">
+.variableText {
   --scroll: v-bind(scroll);
   --text-contrast: calc(90 - var(--scroll) * 0.1);
-  --text-weight: calc(900 - var(--scroll) * 0.9);
-}
-
-.sticky {
-  height: 100vh;
-  //background-color: red;
-
-  position: relative;
-  top: 0px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  --text-weight: calc(var(--scroll) * 0.9);
 }
 </style>

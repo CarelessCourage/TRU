@@ -9,22 +9,45 @@ onMounted(() => {
 
 
 <template>
-<div class="radialtype-wrapper">
-  <div class="radialtype">
-    <p 
-      v-for="(ray, index) in 18" 
-      :key="index" 
-      class="web"
-      :class="'ray-' + ray"
-      data-splitting
-    >
-      sun rays zun rays
-    </p>
+<div class="dawn">
+  <div class="radialtype-wrapper">
+    <div class="radialtype">
+      <p 
+        v-for="(ray, index) in 18" 
+        :key="index" 
+        class="web"
+        :class="'ray-' + ray"
+        data-splitting
+      >
+        sun rays zun rays
+      </p>
+    </div>
   </div>
+  <slot></slot>
 </div>
 </template>
 
 <style lang="scss">
+
+.dawn {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: var(--foreground);
+  color: var(--background);
+
+  h3 {
+    width: 22ch;
+    position: absolute;
+    margin-top: 38rem;
+    transform: translateY(calc(var(--scroll) * -0.4px));
+    text-align: center;
+  }
+}
 
 @for $size from 1 through 18 {
   .ray-#{$size} {
@@ -34,7 +57,7 @@ onMounted(() => {
 }
 
 .radialtype-wrapper {
-  //background-color: blue;
+  transform: scale(3);
   display: flex;
   justify-content: center;
   margin: auto;
@@ -45,7 +68,6 @@ onMounted(() => {
   width: 20em;
   height: 20em;
   position: relative;
-  //background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +79,6 @@ onMounted(() => {
     left: 50%; /* Position X halfway in */
     color: var(--background);
     transform-origin: left;
-    //background-color: blue;
   }
   
 }
