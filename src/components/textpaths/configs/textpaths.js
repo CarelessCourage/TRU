@@ -9,7 +9,7 @@ const textPaths1 = [
     blurFactor: 2,
     forward: true,
     path: paths[0],
-    text: "this idds a text you shit"
+    text: "Conquer time and space",
   },
   {
     offset: 600,
@@ -18,7 +18,7 @@ const textPaths1 = [
     blurFactor: 5,
     forward: true,
     path: paths[1],
-    text: "* Keyframers really knddow animation."
+    text: "type is to convey thought, documents human history"
   },
   {
     offset: 700,
@@ -27,7 +27,7 @@ const textPaths1 = [
     blurFactor: 3,
     forward: true,
     path: paths[0],
-    text: "thddis is a text you shit"
+    text: "The power of type"
   }
 ]
 
@@ -40,7 +40,7 @@ const textPaths2 = [
     blurFactor: 2,
     forward: true,
     path: paths[3],
-    text: "another text path"
+    text: "my mind thinks"
   },
   {
     offset: 600,
@@ -49,7 +49,7 @@ const textPaths2 = [
     blurFactor: 5,
     forward: true,
     path: paths[3],
-    text: "* Keyfrdamers really know animation."
+    text: "Your mind thinks too? Talk to me"
   },
   {
     offset: 800,
@@ -58,7 +58,7 @@ const textPaths2 = [
     blurFactor: 5,
     forward: true,
     path: paths[0],
-    text: "* Kessyframers really know animation."
+    text: "We are full of thoughts and feelings"
   },
   {
     offset: 300,
@@ -67,7 +67,7 @@ const textPaths2 = [
     blurFactor: 3,
     forward: false,
     path: paths[0],
-    text: "this is a text you shit another text path"
+    text: "Talk to me. I want to know your mind"
   },
   {
     offset: 600,
@@ -76,7 +76,7 @@ const textPaths2 = [
     blurFactor: 3,
     forward: false,
     path: paths[4],
-    text: "this is a text you shit another text path"
+    text: "Your words are precious to me. They are my map to your world"
   },
   {
     offset: 1100,
@@ -85,7 +85,7 @@ const textPaths2 = [
     blurFactor: 5,
     forward: true,
     path: paths[2],
-    text: "* Keyframdders really know animation."
+    text: "Lets explore our ideas together"
   },
   {
     offset: 0,
@@ -94,7 +94,7 @@ const textPaths2 = [
     blurFactor: 5,
     forward: true,
     path: paths[4],
-    text: "lol ddthis is a text you shit another text path"
+    text: "Our shared expereince will transend time and space"
   }
 ]
 
@@ -106,7 +106,7 @@ const textPaths3 = [
     blurFactor: 2,
     forward: true,
     path: paths[5],
-    text: "this idds a text you shit"
+    text: "We are type"
   },
   {
     offset: 600,
@@ -115,7 +115,7 @@ const textPaths3 = [
     blurFactor: 5,
     forward: true,
     path: paths[5],
-    text: "* Keyframers really knddow animation."
+    text: "Civilisation started when humans began typing things down"
   },
   {
     offset: 700,
@@ -124,7 +124,7 @@ const textPaths3 = [
     blurFactor: 3,
     forward: true,
     path: paths[5],
-    text: "thddis is a text you shit"
+    text: "The human mind is typography"
   }
 ]
 

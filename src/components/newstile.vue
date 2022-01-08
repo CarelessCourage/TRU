@@ -17,14 +17,14 @@ onMounted(() => {
         <Split :delay="0">
           <h1 data-slide>News</h1>
           <p data-line>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque euismod, nisi eu consectetur consectetur,
-            nisl nunc consectetur nisl, eget consectetur nisl nunc
-            eget consectetur nisl nunc.
+            Here are the latest posts we have published as of today. 
+            We regularly post artickles and tutorials on the topics of typography. 
+            Subscribe yo our newsletter to be updated on new posts and stay tuned 
+            for more content related to typography.
           </p>
         </Split>
-        <Split :delay="0.5" v-if="true">
-          <div class="newsTile">
+        <Split :delay="0" v-if="true">
+          <div class="newsTile stagger">
             <Tile path="/artickle">
               <h3 data-line>Livestream - june 10th</h3>
             </Tile>
@@ -42,7 +42,6 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-
 .news-wrapper {
   min-height: 100vh;
   display: flex;
@@ -50,10 +49,7 @@ onMounted(() => {
   background-color: var(--background);
 }
 
-.news {
-  width: 100%;
-}
-
+.news {width: 100%;}
 .newsTile {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -65,6 +61,9 @@ onMounted(() => {
   
   width: 100%;
   margin-top: 3rem;
-  //background-color:blue;
+}
+
+.splitWrapper .newsTile {
+  --speed: 0.2s;
 }
 </style>

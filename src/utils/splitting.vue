@@ -8,6 +8,7 @@ const props = defineProps({
 })
 
 const splitting = ref(null)
+const enableClass = ref(null)
 
 onMounted(() => {
   Splitting({target: "[data-slide]"});
@@ -15,54 +16,73 @@ onMounted(() => {
 
   gsap.from(splitting.value, { scrollTrigger: {
     trigger: splitting.value,
-    start: 'top bottom',
-    end: 'bottom top',
-    toggleClass: 'enable',
+    start: 'top 85%',
+    end: 'bottom 85%',
+    onEnter: () => enableClass.value = true,
+    onLeaveBack: () => enableClass.value = false,
     markers: false
   }});
 })
 </script>
 
 <template>
-  <div class="splitWrapper" ref="splitting">
+  <div class="splitWrapper" :class="{enable: enableClass}" ref="splitting">
     <slot></slot>
   </div>
 </template>
 
 <style lang="scss">
+.stagger div {
+  &:nth-child(2) .char,
+  &:nth-child(2) .word {
+    --itemStagger: calc(1.7 * 0.5s);
+  }
+  &:nth-child(3) .char,
+  &:nth-child(3) .word {
+    --itemStagger: calc(2.2 * 0.5s);
+  }
+}
+
 .splitWrapper {
+  --itemStagger: calc(1 * 0.5s);
+  --speed: 0.05s;
+
   .char {
-    --delay: calc(var(--char-index) * 0.05s + calc(v-bind(delay) * 1s));
-    display: inline-block;
+    opacity: 0; display: inline-block;
+    transform: translateY(3rem);
+    
+    --spanStagger: calc(var(--char-index) * var(--speed));
+    --delay: calc(var(--itemStagger) + var(--spanStagger));
+
+    transition: 
+      all 0.4s ease-in-out var(--delay), 
+      opacity 0.8s ease-in-out calc(var(--delay) + 0.2s);
   }
 
   .word {
-     --delay: calc(var(--word-index) * 0.05s + calc(v-bind(delay) * 1s));
-    display: inline-block;
+    opacity: 0; display: inline-block;
+    transform: translateY(3rem);
+
+    --spanStagger: calc(var(--word-index) * var(--speed));
+    --delay: calc(var(--itemStagger) + var(--spanStagger));
+    
+    transition: 
+      all 0.4s ease-in-out var(--delay), 
+      opacity 0.2s ease-in-out calc(var(--delay) + 0.2s);
+
   }
 }
 
 .enable.splitWrapper {
    .char {
-    animation: pulse 0.8s var(--delay) backwards;
+    opacity: 1;
+    transform: translateY(0rem);
   }
 
   .word {
-    animation: pulse 0.8s var(--delay) backwards;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 0;
-    transform: translateY(3rem);
-  }
-  30% {
-    opacity: 0;
-  }
-  100% {
     opacity: 1;
     transform: translateY(0rem);
   }
 }
+
 </style>

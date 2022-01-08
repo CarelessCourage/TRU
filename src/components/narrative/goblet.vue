@@ -9,7 +9,7 @@ import VariableText from "./variabletext.vue"
 <div class="goblet">
   <Time :circleIn="true">
     <VariableText>
-      <h1 class="element" v-if="true">...<br> evolves civilisation <br>...</h1>
+      <h1 class="element" v-if="true">...<br> Type follows thought <br>...</h1>
     </VariableText>
   </Time>
   <Time :circleIn="false" v-if="true">

@@ -100,29 +100,24 @@ onMounted(() => {
   //Background
   .yellow {
     border-radius: 0.4rem;
-    position: absolute;
-    z-index: 0;
+    position: absolute; z-index: 0;
     bottom: 0;
-    width: 100%;
-    height: 100%;
-    transition: 0.8s;
+
+    width: 100%; height: 0%;
     background: var(--flavor);
-    animation-delay: 0s;
+    transition: 0.8s 0.0s;
+
     &.enable {
-      animation: slideup 0.8s backwards ease-in-out;
+      height: 100%;
     }
   }
 
   .tile:nth-child(2) .yellow {
-    animation-delay: 0.4s;
+    transition: 0.8s 0.4s;
   }
 
   .tile:nth-child(3) .yellow {
-    animation-delay: 0.8s;
+    transition: 0.8s 0.8s;
   }
-
-  @keyframes slideup {
-    0% {height: 0;}
-    100% {height: 100%;}
-  }
+  
   </style>

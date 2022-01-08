@@ -60,13 +60,13 @@ onMounted(() => {
         <div class="anotherTile">
           <Tile path="/info">
             <Split :delay="0.5">
-            <h3 data-line>What is typography?</h3>
+              <h3 data-line>What is typography?</h3>
             </Split>
           </Tile>
         </div>
       </div>
       <div class="textpathtesttwo" v-if="true">
-        <Convey :textPaths="textPaths[2]" tightness="-20%" :scoped="{ start: '-30%', end: '30%' }"/>
+        <Convey :textPaths="textPaths[2]" tightness="-20%" :scoped="{ start: '20%', end: '180%' }"/>
       </div>
       <div class="content body">
         <NewsTile/>

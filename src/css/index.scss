@@ -56,7 +56,7 @@ p, button {
   letter-spacing: 0px;
   max-width: 55ch;
   font-variation-settings: "wght" 400, "wdth" 100, "CNTR" 0;
-  &.bold span {
+  &.bold span:not(.word) {
     font-size: 1.3rem;
     font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 0;
   }
@@ -100,6 +100,7 @@ button,
 .text.web p{
   font-size: 1.5rem;
   line-height: 2rem;
+  max-width: 45ch;
   span {
     font-size: 1.7rem;
   }
