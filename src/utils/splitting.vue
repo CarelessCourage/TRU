@@ -12,7 +12,7 @@ const enableClass = ref(null)
 
 onMounted(() => {
   Splitting({target: "[data-slide]"});
-  Splitting({target: "[data-line]", by: 'lines' });
+  Splitting({target: "[data-line]", by: 'lines', whitespace: true });
 
   gsap.from(splitting.value, { scrollTrigger: {
     trigger: splitting.value,

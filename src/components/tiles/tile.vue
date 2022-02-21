@@ -29,7 +29,7 @@ onMounted(() => {
     start: 'top bottom',
     end: 'bottom top',
     toggleClass: 'enable',
-    markers: false
+    markers: true
   }});
 })
 </script>
@@ -81,18 +81,26 @@ onMounted(() => {
 
   //Text
   div.tile {
-    h3 {
+    h3, p {
       transition: 0.8s;
       position: relative;
       z-index: 2;
     }
 
+    &:hover p {
+      color: var(--background);
+      opacity: 0.2;
+    }
+
     &:hover h3 {
       color: var(--background);
+      .word {
+        transition: all 0.2s;
+      }
     }
 
     &:active h3 {
-      font-variation-settings: "wght"400, "wdth" 40, "CNTR" 60;
+      //font-variation-settings: "wght"400, "wdth" 40, "CNTR" 60;
       transition: 0.2s;
     }
   }

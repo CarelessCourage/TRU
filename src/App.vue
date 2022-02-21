@@ -6,7 +6,7 @@ import Navigation from "./components/navigation/navigation.vue";
 <template>
   <Navigation/>
   <router-view />
-  <Limbo v-if="true"/>
+  <Limbo/>
 </template>
 
 <style lang="scss">
@@ -53,7 +53,7 @@ html {
   background: var(--background);
   max-width: 100vw;
   overflow-x: hidden;
-  //filter: invert(1) hue-rotate(90deg);  
+  filter: invert(1) hue-rotate(90deg);  
 }
 
 body {

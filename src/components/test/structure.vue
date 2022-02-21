@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import Splitting from "splitting";
 
 onMounted(() => {
-  Splitting({target: "[data-text]", by: 'lines' });
+  Splitting({target: "[data-text]", by: 'lines', whitespace: true });
 
   const texts = gsap.utils.toArray('.text-anim');
   texts.forEach((text) => {

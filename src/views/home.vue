@@ -1,31 +1,30 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from "vue"
 
-import NewsTile from "../components/newstile.vue";
-import TextOcean from "../components/text-ocean/TextOcean.vue"
-
-import Split from "../utils/splitting.vue"
-import Tile from "../components/tiles/tile.vue"
+import NewsTile from "../components/newstile.vue"
+import Carusel from "../components/carusel.vue"
+import HalfCircle from "../components/utils/circle-half.vue"
+import StoryTiles from "../components/storyTiles.vue"
 
 import Convey from "../components/textpaths/convey.vue"
-import textPaths from "../components/textpaths/configs/textpaths";
-import { duration } from "../components/tiles/utils.js";
+import textPaths from "../components/textpaths/configs/textpaths"
+import { duration } from "../components/tiles/utils.js"
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
-const radius = ref(0);
+const radius = ref(0)
 
 const testObj = { start: 'top', end: 'bottom' }
 
 onMounted(() => {
-  gsap.to(window, {duration: 0, scrollTo: "0"});
+  gsap.to(window, {duration: 0, scrollTo: "0"})
   setTimeout(() => {
-    gsap.to(window, {duration: 1, scrollTo: "400"});
-    ScrollTrigger.refresh();
+    gsap.to(window, {duration: 1, scrollTo: "400"})
+    ScrollTrigger.refresh()
   }, duration.value * 500)
 
   gsap.to(radius, {
@@ -36,7 +35,7 @@ onMounted(() => {
       scrub: true,
     },
      value: 1000,
-  });
+  })
 })
 </script>
 
@@ -44,31 +43,21 @@ onMounted(() => {
   <div class="home">
     <div class="headertile">
       <Convey :textPaths="textPaths[1]" tightness="-13%" :scoped="testObj"/>
-      <TextOcean v-if="false"/>
       <div class="gradient"></div>
     </div>
-    <div class="circleTile">
-      <div class="halfcircle">
-        <h1>TRU<br> ... </h1>
-        <div class="textpathtest">
-          <Convey :textPaths="textPaths[0]" tightness="-13%" :scoped="testObj"/>
-        </div>
+    <HalfCircle>
+      <h1>TRU<br> ... </h1>
+      <div class="textpathtest">
+        <Convey :textPaths="textPaths[0]" tightness="-13%" :scoped="testObj"/>
       </div>
-    </div>
+    </HalfCircle>
     <div class="anotherTileWrapper">
-      <div class="content body" v-if="true">
-        <div class="anotherTile">
-          <Tile path="/info">
-            <Split :delay="0.5">
-              <h3 data-line>What is typography?</h3>
-            </Split>
-          </Tile>
-        </div>
-      </div>
-      <div class="textpathtesttwo" v-if="true">
+      <Carusel/>
+      <div class="textpathtesttwo">
         <Convey :textPaths="textPaths[2]" tightness="-20%" :scoped="{ start: '20%', end: '180%' }"/>
       </div>
-      <div class="content body">
+      <div class="body">
+        <NewsTile/>
         <NewsTile/>
       </div>
     </div>
@@ -83,7 +72,6 @@ onMounted(() => {
 }
 
 .textpathtesttwo {
-  //background: pink;
   overflow: hidden;
   margin-top: -35em;
   margin-bottom: -5em;
@@ -93,42 +81,17 @@ onMounted(() => {
   max-width: 100vw;
 }
 
-.anotherTile {
-  width: 100%;
-  height: 12rem;
-  background: var(--flavor);
-  border-radius: 5rem;
-  overflow: hidden;
-  margin-bottom: 12rem;
-  transition: all 0.5s ease;
-  &:hover {
-    border-radius: 0.4rem;
-  }
-  .tile {
-    height: 100%;
-    h3, p {
-      //text-align: center;
-      position: relative;
-      z-index: 20;
-    }
-  }
-}
-
 .home {
   position: relative;
   z-index: 20;
-}
-
-.home .content {
-  background: var(--background);
-  z-index: 20;
+  --halfCircle-radius: calc(v-bind(radius) * 1px);
 }
 
 .anotherTileWrapper {
   position: relative;
-  background: var(--background);
   z-index: 20;
   width: 100vw;
+  margin-top: -20em;
 }
 
 .headertile .gradient {
@@ -152,37 +115,6 @@ onMounted(() => {
   }
 }
 
-.circleTile {
-  background: var(--flavor);
-}
-
-.halfcircle {
-  position: relative;
-  z-index: 10;
-  min-height: 100vh;
-  //margin-top: -15rem;
-  background: var(--background);
-  --radius: calc(v-bind(radius) * 1px);
-  border-radius: var(--radius) var(--radius) 0px 0px;
-
-  padding-top: 12rem;
-
-  h1 { 
-    text-align: center;
-    text-transform: capitalize;
-    font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 10;
-    //line-height: 3rem;
-    padding-bottom: 12rem;
-    width: max-content;
-    margin: auto;
-  }
-
-  p { 
-    text-align: center;
-    font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 10;
-  }
-}
-
 #oceanWrapper {
   opacity: 0.2;
 }
@@ -191,13 +123,10 @@ onMounted(() => {
   position: relative;
   height: 100vh;
   background: var(--flavor);
-  //overflow: hidden;
   .convey {
     position: absolute;
     top: 0;
-    //margin-top: -25rem;
     transform: translateY(-15rem);
-    //height: 20vh;
     overflow: hidden;
   }
 }
