@@ -32,7 +32,7 @@ onMounted(() => {
 <div class="info">
   <PillBody v-if="true">
     <Split :delay="0">
-      <h1 data-slide>What is <br> Typography?</h1>
+      <h1 data-slide>What is <br> Typography</h1>
       <p class="bold" data-line><span>In contemporary use,</span> the practice and study of 
         typography include a broad range, covering all aspects of letter 
         design and application, both mechanical (typesetting, type design, 

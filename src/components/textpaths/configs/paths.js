@@ -1,9 +1,11 @@
+const textSize = 26
+
 const pathObj = {
   path: "M595.8,36.6c0,0-105.8,66.8-310.1,28.8S0.3,80.5,0.3,80.5",
   viewBox: "0 0 596 117.1",
   uniqeId: "curve01",
   reverse: true,
-  size: 23,
+  size: textSize,
 }
 
 const pathObj2 = {
@@ -11,7 +13,7 @@ const pathObj2 = {
   viewBox: "0 0 1000 200",
   uniqeId: "curve02",
   reverse: false,
-  size: 32,
+  size: textSize,
 }
 
 const pathObj3 = {
@@ -19,7 +21,7 @@ const pathObj3 = {
   viewBox: "0 0 594.2 113",
   uniqeId: "curve03",
   reverse: false,
-  size: 23,
+  size: textSize,
 }
 
 const pathObj4 = {
@@ -27,7 +29,7 @@ const pathObj4 = {
   viewBox: "0 0 596 111.1",
   uniqeId: "curve04",
   reverse: false,
-  size: 23,
+  size: textSize,
 }
 
 const pathObj5 = {
@@ -35,7 +37,7 @@ const pathObj5 = {
   viewBox: "0 0 594.2 123.9",
   uniqeId: "curve05",
   reverse: true,
-  size: 23,
+  size: textSize,
 }
 
 const pathDown = {
@@ -43,7 +45,7 @@ const pathDown = {
   viewBox: "0 0 595.2 149.5",
   uniqeId: "curveDown",
   reverse: false,
-  size: 23,
+  size: textSize,
 }
 
 const pathUp = {
@@ -51,7 +53,7 @@ const pathUp = {
   viewBox: "0 0 595.2 164.4",
   uniqeId: "curveUp",
   reverse: true,
-  size: 23,
+  size: textSize,
 }
 
 export default [

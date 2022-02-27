@@ -46,7 +46,7 @@ onMounted(() => {
       <div class="gradient"></div>
     </div>
     <HalfCircle>
-      <h1>TRU<br> ... </h1>
+      <h1 class="logo">TRU<br> ... </h1>
       <div class="textpathtest">
         <Convey :textPaths="textPaths[0]" tightness="-13%" :scoped="testObj"/>
       </div>

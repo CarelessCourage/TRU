@@ -11,7 +11,7 @@ $desktop: 1200px;
 }
 
 html {
-  font-size: clamp(12px, 1vw, 18px);
+  font-size: clamp(12px, 1vw, 78px);
   --text-contrast: 90;
   --text-weight: 900;
 }
@@ -26,6 +26,10 @@ h1 {
   font-size: 6rem;
   line-height: 8rem;
   font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 80;
+}
+
+h1.logo {
+  font-size: 12rem;
 }
 
 h1.element {

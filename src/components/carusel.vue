@@ -22,23 +22,55 @@ const boxes = [
 const el = ref(null)
 const { distanceX, isSwiping } = usePointerSwipe(el)
 
+let adder = ref(0)
+
 let swipeAdd = ref(0)
 let swipeOld = ref(0)
 
 const swipeNew = computed(() => {
   let val = swipeOld.value + swipeAdd.value
   let flooredVal = val < 0 ? 0 : val
-  console.log(Math.round(boxSpace - flooredVal % boxSpace));
+  console.log(swipeSnap.value);
   return flooredVal
 })
 
+const swipeSnap = computed(() => {
+  return Math.round(boxSpace - swipeNew.value % boxSpace)
+})
+
+const adderNew = computed(() => {
+  let val = swipeNew.value
+  return val + adder.value
+})
+
 watch(isSwiping, (val) => {
-  //console.log(val)
   if (!val) {
-    swipeOld.value = swipeNew.value
-    swipeAdd.value = 0
+    setSwipeValue()
+    swipeInertia()
+  } else {
+    adder.value = 0
   }
 })
+
+function setSwipeValue() {
+  swipeOld.value = swipeNew.value
+  swipeAdd.value = 0
+}
+
+let FRICTION_COEF = 0.99;
+let velocity = ref(0)
+watch(swipeNew, (val, old) => {
+  velocity.value = val - old
+})
+
+function swipeInertia() {
+  if(velocity.value > 0.1) {
+    requestAnimationFrame( swipeInertia );
+  }
+  adder.value += velocity.value / 6;
+  velocity.value *= FRICTION_COEF;
+  adder.value *= FRICTION_COEF;
+}
 
 onMounted(() => {
   const wrapWidth = boxes.length * boxSpace
@@ -62,21 +94,12 @@ onMounted(() => {
 
   watch(distanceX, (newValue) => {
     swipeAdd.value = newValue
-    let x = swipeNew.value / wrapWidth
-
-    animation.progress(x % 1)
   })
 
-  function snapX(x) {
-    return Math.round(x / boxSpace) * boxSpace;
-  }
-
-  function updateProgress() {
-    let inverted = this.x
-    
-    //console.log(inverted, " % -- ", animation.progress(), " /// ", inverted / wrapWidth);
-    animation.progress(inverted / wrapWidth);
-  }
+  watch(adderNew, (newValue) => {
+    let x = newValue / wrapWidth
+    animation.progress(x % 1)
+  })
 })
 </script>
 
@@ -85,8 +108,9 @@ onMounted(() => {
   <div class="boxes">
     <div class="box" v-for="(box, index) in boxes" :key="index">
       <div>
-        <p>{{ box.title }}</p>
-        <p>{{ swipeNew }}</p>
+        <p>Adder: {{ adder }} +</p>
+        <p>swipeNew: {{ swipeNew }} =</p>
+        <p>adderNew: {{ adderNew }}</p>
       </div>
     </div>
   </div>

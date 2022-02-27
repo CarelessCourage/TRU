@@ -46,6 +46,11 @@ import Navigation from "./components/navigation/navigation.vue";
   //min-width: 101vw;
 }
 
+* {
+  //border: solid RED 3px;
+  //letter-spacing: 2px;
+}
+
 html {
   font-family: "Atacama", "Roboto VF", sans-serif;
   font-variation-settings: "wght" 400, "wdth" 300, "CNTR" 0;
