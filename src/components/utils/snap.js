@@ -2,15 +2,6 @@ import { watch, ref, computed } from "vue"
 
 let magnetValue = ref(0)
 
-function checkSnap(interval, boxSpace) {
-  const next = boxSpace / 2 > interval.value
-  next ? magnetValue.value -= 15 : magnetValue.value += 15
-
-  console.log("lol: ", interval.value);
-
-  if(!next) {requestAnimationFrame(checkSnap(interval, boxSpace))}
-}
-
 export default function snap(swipeValue, boxSpace, isSwiping) {
 
   const adjustedSwipe = computed(() => {
@@ -22,8 +13,14 @@ export default function snap(swipeValue, boxSpace, isSwiping) {
   })
 
   watch(isSwiping, (swiping) => {
-    !swiping ? checkSnap(interval, boxSpace) : null
+    !swiping ? checkSnap() : null
   })
+
+  function checkSnap() {
+    const next = boxSpace / 2 > interval.value
+    next ? magnetValue.value -= 0.5 : magnetValue.value += 0.5
+    if(interval.value !== 0) {requestAnimationFrame(checkSnap)}
+  }
 
   return adjustedSwipe
 }
