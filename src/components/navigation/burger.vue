@@ -19,7 +19,7 @@ defineProps({
 
 <style lang="scss" scoped>
   .burger {
-    --line: 0.35rem;
+    --line: 6px;
 
     display: flex;
     flex-direction: column;
@@ -30,11 +30,11 @@ defineProps({
     position: fixed;
     z-index: 500000;
 
-    height: 2rem;
+    height: 30px;
     box-sizing: content-box;
 
     border: var(--line) solid var(--foreground);
-    padding: 1rem;
+    padding: 12px;
     cursor: pointer;
 
     overflow: hidden;
@@ -55,17 +55,17 @@ defineProps({
     border: 0px solid var(--foreground);
     .burger-line {
       border-radius: 1em;
-      --offset: 4px;
+      --offset: 3px;
       &:nth-child(1) {
-        width: 3rem;
+        width: 40px;
         transform: rotate(45deg) translateY(calc(0px - var(--offset)));
         transform-origin: center left; 
       }
       &:nth-child(2) {
-        transform: translateX(-3rem);
+        transform: translateX(-19px);
       }
       &:nth-child(3) {
-        width: 3rem;
+        width: 40px;
         transform: rotate(-45deg) translateY(var(--offset));
         transform-origin: center left; 
       }
@@ -75,13 +75,13 @@ defineProps({
   .burger:not(.cross):hover .burger-line {
     border-radius: 1em;
     &:nth-child(1) {
-      width: 3rem;
+      width: 42px;
     }
     &:nth-child(2) {
-      width: 2rem;
+      width: 22px;
     }
     &:nth-child(3) {
-      width: 3rem;
+      width: 42px;
     }
   }
 

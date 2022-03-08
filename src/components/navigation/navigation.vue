@@ -97,7 +97,7 @@ onMounted(() => {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  padding: 4rem 0px;
+  padding: 2rem 0px;
   background-color: var(--background);
   transition: 0.4s ease-in-out;
 
@@ -117,10 +117,6 @@ onMounted(() => {
     &:active {
       letter-spacing: -2rem;
       transition: 0.1s ease-in-out;
-    }
-    &.active {
-      //border-bottom: 3px solid var(--flavor);
-      //margin-bottom: 2rem;
     }
   }
 }

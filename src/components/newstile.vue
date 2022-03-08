@@ -47,6 +47,8 @@ onMounted(() => {
   display: flex;
   align-items: center;
   background-color: var(--background);
+
+  font-size: clamp(12px, 1vw, 78px);
 }
 
 .news {width: 100%;}

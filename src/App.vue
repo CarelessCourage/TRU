@@ -34,6 +34,7 @@ import Navigation from "./components/navigation/navigation.vue";
   --foreground: #2c3e50;
   --flavor: #edfd62;
   --shade: rgb(219, 219, 219);
+  --shade2: #bbc281;
 
   --margin: 1rem;
 }
@@ -46,8 +47,8 @@ import Navigation from "./components/navigation/navigation.vue";
   //min-width: 101vw;
 }
 
-* {
-  //border: solid RED 3px;
+.marked {
+  border: solid var(--flavor) 2px;
   //letter-spacing: 2px;
 }
 
@@ -70,6 +71,10 @@ body {
   margin: 0px;
 }
 
+* {
+  //border: solid red 3px;
+}
+
 a {
   position: relative;
   color: var(--foreground);
@@ -80,12 +85,12 @@ a {
    &::before {
     content: "";
     position: absolute;
-    top: 3rem;
+    top: 1.7rem;
     left: 0px;
     z-index: -1;
     background: var(--flavor);
     width: 0%;
-    height: 2rem;
+    height: 1rem;
     transition: 0.4s ease-in-out;
   }
   &:hover::before {

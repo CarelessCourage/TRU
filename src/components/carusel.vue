@@ -4,11 +4,11 @@ import swipe from "./utils/swipe"
 import animation from "./utils/animation"
 
 const boxes = [
-  {title: "one"},
-  {title: "two"},
-  {title: "three"},
-  {title: "four"},
-  {title: "five"},
+  {title: "one long title of article"},
+  {title: "two long title of article"},
+  {title: "three long title of article"},
+  {title: "four long title of article"},
+  {title: "five long title of article"},
 ]
 
 const boxWidth = 700
@@ -63,8 +63,9 @@ function fromCenter(i) {
 .el { cursor: pointer; }
 
 .boxes {
+  --height: 350px;
   position: relative;
-  height: 350px;
+  height: var(--height);
   width: 100vw;
 }
 
@@ -72,7 +73,7 @@ function fromCenter(i) {
   pointer-events: none;
   width: calc(v-bind(boxWidth) * 1px);
   height: 100%;
-  max-height: 350px;
+  max-height: var(--height);
   overflow: hidden;
 
   display: flex;
@@ -102,16 +103,16 @@ function fromCenter(i) {
       left: 0;
       width: 100%;
       height: 100%;
-      background: var(--foreground);
+      background: var(--flavor);
       opacity: clamp(0, calc(var(--fromCenter) - 10), 1);
       transition: 0.4s ease-in-out;
     }
   }
 
   h3 {
-    letter-spacing: clamp(0.2rem, var(--center), 0rem);
-    line-height: clamp(3rem, var(--center), 15rem);
-    font-size: clamp(3rem, calc(var(--fromCenter) * 1rem), 25rem);
+    letter-spacing: clamp(0.2rem, var(--center), 1rem);
+    line-height: clamp(1.5rem, var(--center), 5rem);
+    font-size: clamp(1.5rem, calc(var(--fromCenter) * 1rem), 15rem);
 
     transition: 0.4s ease-in-out;
 
@@ -120,7 +121,7 @@ function fromCenter(i) {
   }
 
   p { 
-    font-size: 1em;
+    font-size: 0.7em;
     font-weight: bold;
     opacity: 0.4;
     &.redirect {

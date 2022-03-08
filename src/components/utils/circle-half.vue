@@ -1,5 +1,4 @@
 <template>
-
   <div class="circleTile">
     <div class="halfcircle">
       <slot></slot>
@@ -19,21 +18,14 @@
   background: var(--background);
   border-radius: var(--halfCircle-radius) var(--halfCircle-radius) 0px 0px;
 
-  padding-top: 12rem;
+  padding-top: 10rem;
 
-  h1 { 
-    text-align: center;
-    text-transform: capitalize;
-    font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 10;
-    line-height: 3rem;
-    padding-bottom: 12rem;
-    width: max-content;
+  p {
+    width: 24.9rem;
     margin: auto;
-  }
-
-  p { 
-    text-align: center;
-    font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 10;
+    opacity: 0.4;
+    padding-top: 1rem;
+    padding-bottom: 10rem;
   }
 }
 </style>

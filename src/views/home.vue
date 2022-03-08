@@ -5,6 +5,7 @@ import NewsTile from "../components/newstile.vue"
 import Carusel from "../components/carusel.vue"
 import HalfCircle from "../components/utils/circle-half.vue"
 import StoryTiles from "../components/storyTiles.vue"
+import TypeXray from "../components/typexray.vue"
 
 import Convey from "../components/textpaths/convey.vue"
 import textPaths from "../components/textpaths/configs/textpaths"
@@ -23,7 +24,7 @@ const testObj = { start: 'top', end: 'bottom' }
 onMounted(() => {
   gsap.to(window, {duration: 0, scrollTo: "0"})
   setTimeout(() => {
-    gsap.to(window, {duration: 1, scrollTo: "400"})
+    gsap.to(window, {duration: 1, scrollTo: "800"})
     ScrollTrigger.refresh()
   }, duration.value * 500)
 
@@ -46,7 +47,8 @@ onMounted(() => {
       <div class="gradient"></div>
     </div>
     <HalfCircle>
-      <h1 class="logo">TRU<br> ... </h1>
+      <TypeXray>Typographic <br> Research <br>Unit</TypeXray>
+      <p>A collection of resources on typografy and articles showing off what the web can bring to type</p>
       <div class="textpathtest">
         <Convey :textPaths="textPaths[0]" tightness="-13%" :scoped="testObj"/>
       </div>
@@ -73,7 +75,7 @@ onMounted(() => {
 
 .textpathtesttwo {
   overflow: hidden;
-  margin-top: -35em;
+  margin-top: -27em;
   margin-bottom: -5em;
   position: relative;
   z-index: 30;
