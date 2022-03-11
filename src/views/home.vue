@@ -24,7 +24,7 @@ const testObj = { start: 'top', end: 'bottom' }
 onMounted(() => {
   gsap.to(window, {duration: 0, scrollTo: "0"})
   setTimeout(() => {
-    gsap.to(window, {duration: 1, scrollTo: "800"})
+    gsap.to(window, {duration: 1, scrollTo: "750"})
     ScrollTrigger.refresh()
   }, duration.value * 500)
 
@@ -48,7 +48,7 @@ onMounted(() => {
     </div>
     <HalfCircle>
       <TypeXray>Typographic <br> Research <br>Unit</TypeXray>
-      <p>A collection of resources on typografy and articles showing off what the web can bring to type</p>
+      <p>Presenting whats possible with type on the web through articles, and curation of online resources related to type</p>
       <div class="textpathtest">
         <Convey :textPaths="textPaths[0]" tightness="-13%" :scoped="testObj"/>
       </div>

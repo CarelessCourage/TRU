@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref, watch} from "vue"
-import swipe from "./utils/swipe"
+import { swipe, addSwipe } from "./utils/swipe"
 import animation from "./utils/animation"
 
 const boxes = [
@@ -19,10 +19,12 @@ const el = ref(null)
 const sw = ref(0)
 
 onMounted(() => {
-  const swipeValue = swipe(el, boxSpace)
+  const {snapValue} = swipe(el, boxSpace)
   const gsapAnim = animation(boxSpace, wrapWidth)
 
-  watch(swipeValue, (swipe) => {
+  addSwipe(1000)
+
+  watch(snapValue, (swipe) => {
     sw.value = swipe
     let x = swipe / wrapWidth
     gsapAnim.progress(x % 1)

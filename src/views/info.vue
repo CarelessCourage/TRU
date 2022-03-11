@@ -1,5 +1,6 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+import { onKeyStroke } from '@vueuse/core'
 
 import TextOcean from "../components/text-ocean/TextOcean.vue"
 import Goblet from "../components/narrative/goblet.vue"
@@ -23,13 +24,26 @@ onMounted(() => {
   }, 1000)
 })
 
+
+const shift = ref(false)
+
+onKeyStroke('Shift', (e) => {
+  console.log('Shift key down')
+  shift.value = true
+})
+
+onKeyStroke('Shift', (e) => {
+  console.log('Shift key up')
+  shift.value = false
+}, { eventName: 'keyup' })
+
 </script>
 
 <template>
 
 <HeaderGradient v-if="true"/>
 
-<div class="info">
+<div class="info" :class="{marked: shift}">
   <PillBody v-if="true">
     <Split :delay="0">
       <h1 data-slide>What is <br> Typography</h1>

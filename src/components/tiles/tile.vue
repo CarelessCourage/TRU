@@ -29,7 +29,7 @@ onMounted(() => {
     start: 'top bottom',
     end: 'bottom top',
     toggleClass: 'enable',
-    markers: true
+    markers: false
   }});
 })
 </script>

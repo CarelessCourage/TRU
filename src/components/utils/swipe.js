@@ -17,7 +17,13 @@ function onSwipeStop() {
   swipeAdd.value = 0
 }
 
-function swipe(el, boxSpace) {
+
+export function addSwipe(x = 1000) {
+  swipeAdd.value += x
+  console.log("triggered: ", swipeAdd.value);
+}
+
+export function swipe(el, boxSpace) {
   const { distanceX, isSwiping } = usePointerSwipe(el)
 
   watch(isSwiping, (swiping) => {
@@ -31,7 +37,11 @@ function swipe(el, boxSpace) {
   const mom = inertia(swipeValue, isSwiping)
   const snapValue = snap(mom, boxSpace, isSwiping)
 
-  return snapValue
+// watch(snapValue, (d) => {
+//  console.log(d);
+//})
+
+  return {snapValue, addSwipe}
 }
 
-export default swipe
+export default {swipe, addSwipe}

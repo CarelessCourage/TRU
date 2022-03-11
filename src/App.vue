@@ -1,9 +1,11 @@
 <script setup>
 import Limbo from "./components/tiles/limbo.vue"
 import Navigation from "./components/navigation/navigation.vue";
+import Examinezone from "./components/examinezone.vue"
 </script>
 
 <template>
+  <Examinezone/>
   <Navigation/>
   <router-view />
   <Limbo/>
@@ -47,9 +49,10 @@ import Navigation from "./components/navigation/navigation.vue";
   //min-width: 101vw;
 }
 
-.marked {
-  border: solid var(--flavor) 2px;
-  //letter-spacing: 2px;
+.marked * {
+  border: solid rgb(223, 144, 223) 2px;
+  letter-spacing: 2px;
+  transition: all 0.4s ease-in-out;
 }
 
 html {
