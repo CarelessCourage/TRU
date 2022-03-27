@@ -1,18 +1,34 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import { onMounted, ref, watch} from "vue"
 import { swipe, addSwipe } from "./utils/swipe"
 import animation from "./utils/animation"
 
 const boxes = [
-  {title: "one long title of article"},
-  {title: "two long title of article"},
-  {title: "three long title of article"},
-  {title: "four long title of article"},
-  {title: "five long title of article"},
+  {
+    title: "Frank Herbert - on typography",  
+    quote: "an age of science has come, the artist has been motivated to open his mind to the new forces that shape our lives",
+    component: 'herbert',
+  },
+  {
+    title: "Josef Müller-Brockmann - Grid Philosophy",   
+    quote: "Working with the grid system means submitting to laws of universal validity. The use of the grid system implies the will to systematize",
+    component: 'josef',
+  },
+  {
+    title: "Beatrice Ward - what is typography",  
+    quote: "the most important thing about type is that it conveys thought, ideas, images from one mind to other minds.",
+    component: 'info',
+  },
+  {
+    title: "Frank Herbert - on typography", 
+    quote: "an age of science has come, the artist has been motivated to open his mind to the new forces that shape our lives",
+    component: 'herbert',
+  },
 ]
 
-const boxWidth = 700
-const boxSpace = boxWidth + 0
+const boxWidth = 401
+const boxSpace = boxWidth + 20
 const wrapWidth = boxes.length * boxSpace
 
 const el = ref(null)
@@ -21,8 +37,6 @@ const sw = ref(0)
 onMounted(() => {
   const {snapValue} = swipe(el, boxSpace)
   const gsapAnim = animation(boxSpace, wrapWidth)
-
-  addSwipe(1000)
 
   watch(snapValue, (swipe) => {
     sw.value = swipe
@@ -36,7 +50,21 @@ function fromCenter(i) {
   const percent = (i - (fullRotation % 1) * boxes.length) * 100
   return {
     string: "--fromCenter: " + Math.abs(percent),
-    number: Math.abs(percent)
+    number: Math.abs(fullRotation)
+  }
+}
+
+const getxx = ref(0)
+
+function clickDown() {
+  getxx.value = sw.value
+}
+
+const router = useRouter()
+
+function clickUp(component = 'info') {
+  if(Math.abs(getxx.value - sw.value) < 10) {
+    router.push({name: component})
   }
 }
 </script>
@@ -48,12 +76,12 @@ function fromCenter(i) {
       class="box" 
       v-for="(box, index) in boxes" 
       :key="index"
+      @click="clickDown"
+      @mouseup="clickUp(box.component)"
     >
       <div :style="fromCenter(index).string" class="container">
-        <p class="title">{{box.title}}</p>
-        <h3>We cant always be on top of 
-        every problem. The problem 
-        must unfurl itself over time</h3>
+        <p class="title details">{{box.title}}</p>
+        <h2>{{box.quote}}</h2>
         <p class="redirect">- read more</p>
       </div>
     </div>
@@ -72,7 +100,8 @@ function fromCenter(i) {
 }
 
 .box {
-  pointer-events: none;
+  --center: calc(var(--fromCenter) * 1px - 10px);
+
   width: calc(v-bind(boxWidth) * 1px);
   height: 100%;
   max-height: var(--height);
@@ -83,7 +112,47 @@ function fromCenter(i) {
   align-items: center;
 
   position: absolute;
+  cursor: pointer;
+  z-index: 10000;
 
+  .container {
+    &, & *::selection {
+      background-color: Transparent;
+    }
+  }
+
+  h2 {
+    transition: 0.2s ease-in-out;
+    text-transform: uppercase;
+  }
+
+  &:hover h2 {
+    //font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 80;
+  }
+
+  &:hover p.redirect {
+    letter-spacing: 1px;
+  }
+
+  p { 
+    //font-size: 0.7em;
+    //font-weight: bold;
+    //opacity: 0.4;
+    transition: 0.2s ease-in-out;
+    &.redirect {
+      text-align: right;
+      max-width: 100%;
+    }
+    &.title, &.redirect {
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+  }
+}
+
+
+.box.pills {
+  /*not in use*/
   .container {
     --center-flat: calc(var(--fromCenter) * 1px - 10px);
     --center: calc(var(--fromCenter) * 1px - 10px);
@@ -94,9 +163,6 @@ function fromCenter(i) {
     overflow: hidden;
     border-radius: clamp(0rem, calc(var(--fromCenter) * 1rem), 50rem);
 
-    //background: var(--foreground);
-    //color: var(--background);
-    //filter: blur(clamp(0rem, calc(var(--fromCenter) * 1px - 10px), 220px));
     &:before {
       content: "";
       position: absolute;
@@ -122,14 +188,5 @@ function fromCenter(i) {
     font-weight: 900;
   }
 
-  p { 
-    font-size: 0.7em;
-    font-weight: bold;
-    opacity: 0.4;
-    &.redirect {
-      text-align: right;
-      max-width: 100%;
-    }
-  }
 }
 </style>

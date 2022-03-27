@@ -25,7 +25,7 @@ onMounted(() => {
 })
 
 
-const shift = ref(false)
+const shift = ref(true)
 
 onKeyStroke('Shift', (e) => {
   console.log('Shift key down')
@@ -43,8 +43,8 @@ onKeyStroke('Shift', (e) => {
 
 <HeaderGradient v-if="true"/>
 
-<div class="info" :class="{marked: shift}">
-  <PillBody v-if="true">
+<div class="info">
+  <PillBody v-if="true" :class="{marked: shift}">
     <Split :delay="0">
       <h1 data-slide>What is <br> Typography</h1>
       <p class="bold" data-line><span>In contemporary use,</span> the practice and study of 
@@ -78,7 +78,7 @@ onKeyStroke('Shift', (e) => {
     <Convey :textPaths="textPaths[1]" tightness="-13%" :scoped="{ start: '-60%', end: '300%' }" v-if="true"/>  
   </div>
   <div class="text-block" v-if="true">
-    <div class="body paragraphs">
+    <div class="body paragraphs" :class="{marked: shift}">
       <div class="content">
         <Split :delay="0">
           <h3 data-slide>Type represents the start of human civilisation</h3>
@@ -104,7 +104,7 @@ onKeyStroke('Shift', (e) => {
     <Convey :textPaths="textPaths[2]" tightness="-17%" :scoped="{ start: '-90%%', end: '700%' }" v-if="true"/>  
   </div>
   <div class="text-block" v-if="true">
-    <div class="body paragraphs">
+    <div class="body paragraphs" :class="{marked: shift}">
       <div class="content">
         <Split :delay="0">
           <h3 data-slide>
@@ -126,7 +126,7 @@ onKeyStroke('Shift', (e) => {
     <Convey :textPaths="textPaths[0]" tightness="-23%" :scoped="{ start: '-20%', end: '1200%' }" v-if="true"/>  
   </div>
   <div class="text-block" v-if="true">
-    <div class="body paragraphs">
+    <div class="body paragraphs" :class="{marked: shift}">
       <div class="content">
         <Split :delay="0">
           <h3 data-slide>

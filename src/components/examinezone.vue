@@ -24,13 +24,15 @@ onKeyStroke('Shift', (e) => {
 <style lang="scss">
 .examinezone {
   --size: 0em;
+  //--size: 90em;
   height: var(--size); width: var(--size);
   border-radius: 100%;
   //background-color: var(--foreground);
 
   position: absolute;
-  z-index: 100000000000;
-  top: 0px;
+  z-index: 1000000000000000;
+  top: 50vh;
+  left: 100vw;
   top: calc(v-bind(y) * 1px);
   left: calc(v-bind(x) * 1px);
 
@@ -40,6 +42,7 @@ onKeyStroke('Shift', (e) => {
   //filter: blur(10px);
 
   transition: transform 0.8s ease-in-out;
+  //transition: transform 0.8s ease-in-out, all 0.4s ease-in-out;
   pointer-events: none;
 
   &.pressed {

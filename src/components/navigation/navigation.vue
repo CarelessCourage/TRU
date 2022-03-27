@@ -19,10 +19,13 @@ onMounted(() => {
        <h2 class="item" data-slide>Home</h2>
       </router-link>
       <router-link :to="{ name: 'info'}">
-        <h2 class="item" data-slide>Info</h2>
+        <h2 class="item" data-slide>Essays</h2>
       </router-link>
       <router-link :to="{ name: 'artickle'}">
-        <h2 class="item" data-slide>Artickles</h2>
+        <h2 class="item" data-slide>Research</h2>
+      </router-link>
+      <router-link :to="{ name: 'artickle'}">
+        <h2 class="item" data-slide>Resources</h2>
       </router-link>
     </div>
   </div>
@@ -107,7 +110,7 @@ onMounted(() => {
   }
   .item {
     cursor: pointer;
-    padding: 1rem 0px;
+    padding: 0.2rem 0px;
     width: 100%;
     max-width: 100vw;
     transition: 0.2s ease-in-out;

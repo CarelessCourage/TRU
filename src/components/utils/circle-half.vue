@@ -27,5 +27,9 @@
     padding-top: 1rem;
     padding-bottom: 10rem;
   }
+
+  .wrapper {
+    margin: auto;
+  }
 }
 </style>

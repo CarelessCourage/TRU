@@ -4,7 +4,7 @@ let magnetValue = ref(0)
 const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
 export default function snap(swipeValue, boxSpace, isSwiping) {
-  let boxCenter = boxSpace / 2
+  let boxCenter = boxSpace
 
   const adjustedSwipe = computed(() => {
     return swipeValue.value + magnetValue.value

@@ -62,7 +62,7 @@ html {
   background: var(--background);
   max-width: 100vw;
   overflow-x: hidden;
-  //filter: invert(1) hue-rotate(90deg);  
+  //filter: invert(1) hue-rotate(90deg);   
 }
 
 body {
@@ -75,7 +75,7 @@ body {
 }
 
 * {
-  //border: solid red 3px;
+  //border: solid red 1px;
 }
 
 a {
@@ -88,7 +88,7 @@ a {
    &::before {
     content: "";
     position: absolute;
-    top: 1.7rem;
+    top:  1.1rem;
     left: 0px;
     z-index: -1;
     background: var(--flavor);

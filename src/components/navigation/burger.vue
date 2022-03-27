@@ -25,21 +25,24 @@ defineProps({
     flex-direction: column;
     justify-content: space-between;
 
-    top: 1rem;
-    right: 1rem;
+    top: 2em; right: 2em;
     position: fixed;
     z-index: 500000;
 
     height: 30px;
     box-sizing: content-box;
 
-    border: var(--line) solid var(--foreground);
+    //border: var(--line) solid var(--foreground);
     padding: 12px;
     cursor: pointer;
 
     overflow: hidden;
     background: var(--background);
     transition: 0.2s ease-in-out;
+
+    @media (max-width: 800px) {
+      top: 0.2em; right: 0.2em;
+    }
   }
 
   .burger-line {
