@@ -71,7 +71,7 @@ onMounted(() => {
   background: var(--background);
   overflow: hidden;
 
-  animation: paperUnwrap 2s cubic-bezier(0.72, 0.01, 0.32, 0.99);
+  //animation: paperUnwrap 2s cubic-bezier(0.72, 0.01, 0.32, 0.99);
   animation-fill-mode: backwards;
   animation-delay: 2s;
   //animation-play-state: paused;
