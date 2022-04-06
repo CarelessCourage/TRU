@@ -129,6 +129,7 @@ onMounted(() => {
 
 .pitch {
   grid-column: 3 / span 3;
+  @media (max-width: 650px) { grid-column: span 6;}
   & > * {
     max-width: 33ch;
   } 
@@ -142,9 +143,10 @@ onMounted(() => {
 }
 
 .simple .content {
-  padding: 1em 3em 0em;
+  padding: 1em 3em 12em;
   display: grid; gap: 2em;
   grid-template-columns: repeat(6, 1fr);
+  @media (max-width: 400px) { padding: 1em 0em 12em; }
 }
 
 .box h2  {

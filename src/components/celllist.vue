@@ -194,6 +194,8 @@ function over(index) {
 
 .explainertwo {
   grid-column: 2 / span 3;
+  @media (max-width: 900px) { grid-column: 2 / span 5; }
+  @media (max-width: 550px) { grid-column: span 6; }
 }
 
 .cell {
@@ -263,6 +265,27 @@ function over(index) {
     //align-items: center;
     flex-direction: column;
     overflow: hidden;
+
+    .cell-title, .details {
+      transform-origin: top left;
+      transition: .4s  ease-in-out;
+    }
+
+    &:hover p.cell-title {
+      font-variation-settings: 
+        "wght" 900, 
+        "wdth" 100, 
+        "CNTR" 0;
+    }
+
+    &:hover p.details {
+      opacity: 0.1;
+      transform: scale(7) translate(0.8em, -0.6em);
+      font-variation-settings: 
+        "wght" 900, 
+        "wdth" 100, 
+        "CNTR" 0;
+    }
   }
 
   --lol: 2;

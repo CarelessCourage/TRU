@@ -131,7 +131,7 @@ function clickUp(component = 'info') {
   }
 
   &:hover p.redirect {
-    letter-spacing: 1px;
+    letter-spacing: 3px;
   }
 
   p { 

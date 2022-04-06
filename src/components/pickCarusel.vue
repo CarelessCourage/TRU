@@ -36,12 +36,32 @@ const boxes = [
     component: 'info',
   },
 ]
+
+let breakpoints = {
+  0: {
+    itemsToShow: 1,
+    snapAlign: 'end',
+  },
+  400: {
+    itemsToShow: 1.5,
+    snapAlign: 'end',
+  },
+  700: {
+    itemsToShow: 2.06,
+    snapAlign: 'end',
+  },
+  1024: {
+    itemsToShow: 3.06,
+    snapAlign: 'end',
+  },
+}
 </script>
 
 <template>
   <div class="stretchOverMargin">
     <Carousel 
       :items-to-show="3.06" 
+      :breakpoints="breakpoints"
       :wrap-around="true" 
       snapAlign="end" 
       :autoplay="false" 
@@ -72,8 +92,13 @@ const boxes = [
 
 .stretchOverMargin {
   //background: rgb(240, 240, 240);
-  width: 92.32vw;
-  transform: translateX(-2.8em);
+  width: 100%;
+  transform: translateX(0em);
+  //background: red;
+  @media (max-width: 400px) { 
+    transform: translateX(-5%); 
+    width: 110%; 
+  }
 }
 
 .carousel__viewport {
@@ -90,13 +115,29 @@ const boxes = [
   //padding: 40px;
   & > * {
     margin-bottom: 5px;
+    transform-origin: bottom left;
     transition: .4s ease-in-out;
+  }
+
+  p.redirect {
+    pointer-events: none;
   }
 
   &:hover {
     opacity: 1 !important;
     & > *:not(p) {
-      font-variation-settings: "wght" 600, "wdth" 100, "CNTR" 0;
+      font-variation-settings: 
+        "wght" 600, 
+        "wdth" 100, 
+        "CNTR" 0;
+    }
+    p.redirect {
+      transform: scale(5) translate(-1em, 0.4em);
+      opacity: 0.1;
+      font-variation-settings: 
+        "wght" 900, 
+        "wdth" 100, 
+        "CNTR" 0;
     }
   }
 }
