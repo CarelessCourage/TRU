@@ -52,6 +52,10 @@ function click(index = 0) {
   router.push({name: 'research'})
 }
 
+function toArchive() {
+  router.push({name: 'archive'})
+}
+
 const column = ref(0);
 
 function over(index) {
@@ -72,7 +76,7 @@ function over(index) {
     </p>
   </div>
   <div class="celllist">
-    <div class="redirect">
+    <div class="redirect" @click="toArchive">
       <p>go to</p>
       <h3>Research Archive</h3>
     </div>

@@ -47,9 +47,10 @@ function click(index = 0) {
   //height: 2em;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-column: span 4;
+  grid-column: span 5;
   column-gap: 2em;
   text-transform: uppercase;
+  margin-bottom: 5em;
   //padding: 2em 0px;
 
   @media (max-width: 1350px) {
@@ -63,6 +64,7 @@ function click(index = 0) {
 
 .list-item {
   grid-column: span 2;
+  margin-bottom: 1em;
   display: grid;
   grid-template-columns: 1fr;
   //padding-bottom: 0.5em;

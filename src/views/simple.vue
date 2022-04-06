@@ -8,7 +8,6 @@ import CellList from "../components/celllist.vue"
 
 import Goblet from "../components/narrative/goblet.vue"
 import { onMounted} from "vue"
-import useNavigation from "../components/navigation/store";
 import PaperWrapper from "../components/paperWrapper.vue"
 import NewsTile from "../components/newstile.vue"
 
@@ -16,10 +15,7 @@ import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 
-const { navigation } = useNavigation();
-
 onMounted(() => {
-  navigation.value = false;
   gsap.to(window, {duration: 1, scrollTo: "0"});
 })
 </script>
@@ -84,7 +80,7 @@ onMounted(() => {
       <TextOcean/>
     </div>
 
-    <div class="padd" v-if="false">
+    <div class="padd" v-if="true">
       <NewsTile/>
     </div>
 

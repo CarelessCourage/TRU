@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from "../views/home.vue"
 import Artickle from "../views/artickle.vue"
+import Archive from "../views/archive.vue"
 import Info from "../views/info.vue"
 import Simple from "../views/simple.vue"
 import Research from "../views/research.vue"
@@ -12,6 +13,11 @@ const routes = [
     path: '/legacy',
     name: "legacy",
     component: Home
+  },
+  { 
+    path: '/archive',
+    name: "archive",
+    component: Archive
   },
   { 
     path: '/artickle',

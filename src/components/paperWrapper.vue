@@ -102,6 +102,7 @@ function click(e) {
   //animation-delay: 2s;
 
   overflow: hidden;
+  width: 100%;
   //animation-play-state: paused;
 
   h1 { margin: 0px; }

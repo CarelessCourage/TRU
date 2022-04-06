@@ -7,12 +7,16 @@ import { ref } from "vue"
 const value = ref(null);
 const options = ref([
   {
-    label: 'DC',
-    options: [{label: 'Batman', value:  'Batman'}, {label: 'Joker', value:  'Joker'}, {label: 'Robin', value:  'Robin'},],
+    label: 'Your Tags',
+    options: ['Favorites', 'Saved'],
   },
   {
-    label: 'Marvel',
-    options: ['Spiderman', 'Iron Man', 'Captain America'],
+    label: 'Site Tags',
+    options: ['Accademic Research', 'Web Type', 'Type Lessons'],
+  },
+  {
+    label: 'Media Tags',
+    options: ['Inspirational Web', 'Inspirational Print'],
   },
 ])
 
@@ -57,8 +61,14 @@ function testOption(what) {
 .multiselect-group-label {
   background-color: var(--shade);
   border-bottom: dotted 1px var(--foreground);
+  opacity: 0.7;
   span {
-    opacity: 0.2;
+    opacity: 0.7;
+    font-variation-settings: "wght" 100, "CNTR" 90;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    font-style: italic;
+    
   }
 
   &.is-selected {

@@ -1,12 +1,13 @@
 <script setup>
-import { useMouse } from '@vueuse/core'
-const { x, y } = useMouse()
+  import { useMouse } from '@vueuse/core'
+  const { x, y } = useMouse()
 </script>
 
 <template>
-  <p>{{x}}</p>
   <div class="placer">
-    <div class="invert"></div>
+    <div class="invert">
+      <p>{{x}}</p>
+    </div>
   </div>
 </template>
 
@@ -17,8 +18,7 @@ const { x, y } = useMouse()
   height: 500px;
   position: fixed;
   z-index: 100;
-  top: 0px;
-  top: calc(v-bind(y) * 1px);
+  top: calc(50 * 1px);
   left: calc(v-bind(x) * 1px);
 }
 .invert {

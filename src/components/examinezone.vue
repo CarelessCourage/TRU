@@ -44,14 +44,14 @@ onKeyStroke('Shift', (e) => {
   transition: transform 0.8s ease-in-out;
   //transition: transform 0.8s ease-in-out, all 0.4s ease-in-out;
   pointer-events: none;
+}
 
-  &.pressed {
+ .examinezone.pressed {
     transform: translate(-50%, -50%) scale(20);
     transition: transform 0.2s ease-in-out;
   }
 
-  &.shift {
+  .examinezone.shift {
     --size: 12em;
   }
-}
 </style>
