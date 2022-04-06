@@ -117,6 +117,7 @@ function over(index) {
     transform: translate(0.7em, 0.3em);
     transition: .4s ease-in-out;
     transform-origin: top right;
+    max-width: 100%;
   }
 
   h3 {
@@ -213,10 +214,20 @@ function over(index) {
   position: relative;
 
   transition: 0.4s ease-in-out;
-
+   
   @media (max-width: 1000px) { grid-column: span 2;}
-  @media (max-width: 650px) { grid-column: span 3;}
-  @media (max-width: 450px) { grid-column: span 6;}
+  @media (max-width: 980px) { 
+    grid-column: span 3;
+    &:nth-child(-n+13) {
+      display: none;  
+    }
+  }
+  @media (max-width: 750px) {
+    grid-column: span 6;
+    &:nth-child(-n+15) {
+      display: none;
+    }
+  }
 
   &::after {
     content: "";
@@ -233,6 +244,7 @@ function over(index) {
     transition: 0.4s ease-in-out;
     line-height: 0.7;
     opacity: calc(var(--opacity) / 10);
+    width: 100%;
     font-variation-settings: 
         "wght" var(--wgth), 
         "wdth" 900, 
