@@ -2,7 +2,6 @@
 import TypeXray from "../components/typexray.vue"
 import Carusel from "../components/pickCarusel.vue"
 
-
 import TextOcean from "../components/text-ocean/TextOcean.vue"
 import Resources from "../components/resources.vue"
 import CellList from "../components/celllist.vue"
@@ -36,7 +35,7 @@ onMounted(() => {
         <p class="details">Interact with the menu on the right to open the site index and navigate to any other page</p>
       </div>
 
-      <div class="pitch">
+      <div class="pitch" data-speed="0.9">
         <h3>Compiling and <span>curating</span> collections of typographic research and resources; 
           celebrating the history of type and the <span>cutting edge</span> of type on the web
         </h3>
@@ -46,7 +45,7 @@ onMounted(() => {
         <p class="details">Click and drag the titles below. Its an infinite scroll listing featured essays on typography</p>
       </div>
 
-      <div class="w" v-if="true">
+      <div class="w" v-if="true"  data-speed="1.2">
         <Carusel/>
       </div>
 

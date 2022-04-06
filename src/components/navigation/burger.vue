@@ -25,7 +25,7 @@ defineProps({
     flex-direction: column;
     justify-content: space-between;
 
-    top: 2em; right: 2em;
+    top: 2em; right: 3em;
     position: fixed;
     z-index: 500000;
 

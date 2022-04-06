@@ -1,19 +1,45 @@
 <script setup>
-import { onMounted } from "vue"
+import { onMounted, ref } from "vue"
 import useNavigation from "./navigation/store";
+import { setUnwrap, setVelocity } from "../store/anim.js"
+
+import { gsap } from "gsap";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+gsap.registerPlugin(ScrollSmoother);
 
 const { navigation } = useNavigation();
+const page = ref(null)
 
 onMounted(() => {
+  setUnwrap(false)
   navigation.value = false;
+  page.value.addEventListener("webkitAnimationEnd", click);
 })
+
+function click(e) {
+  if(e.animationName === "paperUnwrap") {
+    setUnwrap(true)
+    ScrollSmoother.create({
+      smooth: 1,
+      effects: true,
+      smoothTouch: 0.1,
+      onUpdate: self => {
+        setVelocity((Math.abs(self.getVelocity()) / 1000) - 0.5);
+      }
+    });
+  }
+}
 </script>
 
 <template>
-  <div class="simpleWrapper">
-    <div class="simple">
-     <slot></slot>
-   </div>
+<div id="smooth-wrapper">
+    <div id="smooth-content">
+      <div class="simpleWrapper">
+        <div class="simple" ref="page">
+          <slot></slot>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -71,9 +97,11 @@ onMounted(() => {
   background: var(--background);
   overflow: hidden;
 
-  //animation: paperUnwrap 2s cubic-bezier(0.72, 0.01, 0.32, 0.99);
+  animation: paperUnwrap 5s cubic-bezier(0.72, 0.01, 0.32, 0.99);
   animation-fill-mode: backwards;
-  animation-delay: 2s;
+  //animation-delay: 2s;
+
+  overflow: hidden;
   //animation-play-state: paused;
 
   h1 { margin: 0px; }
@@ -91,9 +119,26 @@ onMounted(() => {
 
 @keyframes paperUnwrap {
   0% {
-    transform: translateY(10em);
-    width: 40%;
-    max-height: 15em;
+    transform: translateY(40vh);
+    width: 0%;
+    max-height: 2em;
+  }
+  25% {
+    width: 50%;
+    max-height: 2em;
+  }
+  30% {
+    transform: translateY(40vh);
+    max-height: 2em;  
+  }
+  50% {
+    transform: translateY(20vh);
+    max-height: 19em;
+  }
+  55% {
+    transform: translateY(20vh);
+    width: 50%;
+    max-height: 19em;
   }
   100% {
     transform: translateY(0em);

@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from "vue";
 import Burger from "./burger.vue";
+import Sidebar from "./sidebar.vue";
 import useNavigation from "./store"
 import Splitting from "splitting";
 
@@ -13,6 +14,7 @@ onMounted(() => {
 
 <template>
   <Burger @click="navigation = !navigation" :navigation="navigation"/>
+  <Sidebar v-if="false"/>
   <div class="navigation" :class="{active: navigation}">
     <div class="body">
       <router-link :to="{ name: 'home'}">

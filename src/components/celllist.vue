@@ -64,7 +64,7 @@ function over(index) {
   <div class="explainer">
     <h1>Accademic Research</h1>
   </div>
-  <div class="explainertwo">
+  <div class="explainertwo" data-speed="0.9">
     <p>
       This is a <span>list of research publications</span> related to typography. 
       It is gathered by TRU users and curated by the TRU team. 
@@ -227,6 +227,16 @@ function over(index) {
     &:nth-child(-n+15) {
       display: none;
     }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 1em; height: 1em;
+    background-color: var(--foreground);
+    opacity: 0.2;
+    border-radius: 50em;
+    z-index: -1;
   }
 
   &::after {

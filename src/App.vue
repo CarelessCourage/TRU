@@ -2,6 +2,14 @@
 import Limbo from "./components/tiles/limbo.vue"
 import Navigation from "./components/navigation/navigation.vue";
 import Examinezone from "./components/examinezone.vue"
+import { velocity } from "./store/anim.js"
+import { watch, ref } from "vue";
+
+let scrollVelocity = ref(0);
+watch(velocity, (newVal) => {
+  scrollVelocity.value = newVal;
+  console.log("velociffty:", newVal);
+});
 </script>
 
 <template>
@@ -66,6 +74,7 @@ html {
 }
 
 body {
+  opacity: v-bind(scrollVelocity);
   margin: 0px;
 }
 

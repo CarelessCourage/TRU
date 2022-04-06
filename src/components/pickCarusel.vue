@@ -1,8 +1,19 @@
 <script setup>
-//import Carusel from "../components/carusel.vue"
+//import Carusel from "../components/carusel.vue"#
+import { ref, watch } from "vue"
+import { unwrap } from "../store/anim.js"
 
 import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import { Carousel, Slide, Navigation } from 'vue3-carousel';
+
+const car = ref(null);
+watch(unwrap, () => {
+  if(unwrap) {
+    console.log("unwrap");
+    car.value.restartCarousel();
+  }
+})
+
 
 const boxes = [
   {
@@ -67,6 +78,7 @@ let breakpoints = {
       :autoplay="false" 
       :transition="300"
       pauseAutoplayOnHover="true"
+      ref="car"
     >
 
       <Slide v-for="(box, index) in boxes" :key="index">
