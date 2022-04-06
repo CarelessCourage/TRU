@@ -53,7 +53,7 @@ let breakpoints = {
     itemsToShow: 1,
     snapAlign: 'end',
   },
-  400: {
+  500: {
     itemsToShow: 1.5,
     snapAlign: 'end',
   },
