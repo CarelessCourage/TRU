@@ -25,6 +25,14 @@ const scrollMaxValue = 1100;
 
 let scroll = ref(0);
 onMounted(() => {
+  setGsap();
+  //setScroll();
+})
+
+const { inertia } = useInertia(scroll, scrollMaxValue);
+const { pathRef, direction } = useDirection(scroll);
+
+function setGsap() {
   gsap.to(scroll, {
     scrollTrigger: {
       trigger: svgRef.value,
@@ -35,10 +43,13 @@ onMounted(() => {
     },
     value: scrollMaxValue,
   });
-})
+}
 
-const { inertia } = useInertia(scroll, scrollMaxValue);
-const { pathRef, direction } = useDirection(scroll);
+function setScroll() {
+  setTimeout(() => {
+    setGsap();
+  }, duration.value * 500)
+}
 </script>
 
 <template>

@@ -1,6 +1,8 @@
 <script setup>
 //import Carusel from "../components/carusel.vue"#
 import { ref, watch } from "vue"
+import { useInterval } from '@vueuse/core'
+import { useRouter } from 'vue-router'
 import { unwrap } from "../store/anim.js"
 
 import 'vue3-carousel/dist/carousel.css';
@@ -9,11 +11,9 @@ import { Carousel, Slide, Navigation } from 'vue3-carousel';
 const car = ref(null);
 watch(unwrap, () => {
   if(unwrap) {
-    console.log("unwrap");
     car.value.restartCarousel();
   }
 })
-
 
 const boxes = [
   {
@@ -66,6 +66,30 @@ let breakpoints = {
     snapAlign: 'end',
   },
 }
+
+const router = useRouter()
+const sortClick = ref(false);
+const clicked = ref(false);
+
+function clickDown() {
+  clicked.value = true;
+  sortClick.value = true;
+
+  setTimeout(() => {
+    sortClick.value = false;
+  }, 100);
+
+  console.log("lol clicked");
+}
+
+function clickUp(box) {
+  clicked.value = false;
+  if(sortClick.value) {
+    router.push({name: box.component})
+  }
+
+  console.log("lol clicked");
+}
 </script>
 
 <template>
@@ -81,7 +105,12 @@ let breakpoints = {
       ref="car"
     >
 
-      <Slide v-for="(box, index) in boxes" :key="index">
+      <Slide 
+        v-for="(box, index) in boxes" 
+        :key="index" 
+        @mousedown="clickDown"
+        @mouseup="clickUp(box)"
+      >
         <div class="carousel__item">
           <p class="title details">{{box.title}}</p>
           <h3>{{box.quote}}</h3>

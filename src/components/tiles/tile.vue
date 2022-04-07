@@ -14,7 +14,7 @@ watch(banner, () => {
 })
 
 function toggleLimbo(e) {
-  innerText.value = e.path[1].innerText
+  //innerText.value = e.path[1].innerText
   limbo.value = !limbo.value
   setTimeout(() => {
     router.push(props.path)
@@ -43,7 +43,7 @@ onMounted(() => {
   >
     <slot></slot>
     <div class="gradient"></div>
-    <div class="yellow" ref="yellow"></div>
+    <div class="yellowxx" ref="yellow"></div>
   </div>
 </template>
 
@@ -106,14 +106,14 @@ onMounted(() => {
   }
 
   //Background
-  .yellow {
+  .yellowxx {
     border-radius: 0.4rem;
     position: absolute; z-index: 0;
     bottom: 0;
 
-    width: 100%; height: 0%;
+    width: 100%; height: 100%;
     background: var(--flavor);
-    transition: 0.8s 0.0s;
+    transition: 0.2s;
 
     &.enable {
       height: 100%;

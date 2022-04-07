@@ -1,41 +1,69 @@
 <script setup>
 import { onMounted, ref } from "vue"
 import useNavigation from "./navigation/store";
-import { setUnwrap, setVelocity } from "../store/anim.js"
+import { setUnwrap, setVelocity, initialLoad } from "../store/anim.js"
 
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-gsap.registerPlugin(ScrollSmoother);
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+const props = defineProps({
+  disablePaper: Boolean
+})
 
 const { navigation } = useNavigation();
 const page = ref(null)
+let scrollSmooth = null
+let reqAnimationId;
 
 onMounted(() => {
   setUnwrap(false)
   navigation.value = false;
-  page.value.addEventListener("webkitAnimationEnd", click);
+
+  if(!props.disablePaper) {
+    page.value.addEventListener("webkitAnimationEnd", click);
+  }
+  
+  setScrollSmooth()
+  setScrollSmoothActiveUpdate()
 })
 
 function click(e) {
   if(e.animationName === "paperUnwrap") {
     setUnwrap(true)
-    ScrollSmoother.create({
-      smooth: 1,
-      effects: true,
-      smoothTouch: 0.1,
-      onUpdate: self => {
-        setVelocity((Math.abs(self.getVelocity()) / 1000) - 0.5);
-      }
-    });
+    cancelAnimationFrame(reqAnimationId)
+    ScrollTrigger.refresh();
+    initialLoad.value = false
   }
+}
+
+function setScrollSmoothActiveUpdate() {
+  ScrollTrigger.refresh();
+  reqAnimationId = requestAnimationFrame(setScrollSmoothActiveUpdate)
+}
+
+function setScrollSmooth() {
+  if(scrollSmooth) scrollSmooth.kill()
+  scrollSmooth = ScrollSmoother.create({
+    smooth: 1,
+    effects: true,
+    smoothTouch: 0.1,
+    onUpdate: self => {
+      setVelocity((Math.abs(self.getVelocity()) / 1000) - 0.5);
+    }
+  });
 }
 </script>
 
 <template>
 <div id="smooth-wrapper">
     <div id="smooth-content">
-      <div class="simpleWrapper">
-        <div class="simple" ref="page">
+      <div class="noPaper" ref="page" v-if="props.disablePaper">
+        <slot></slot>
+      </div>
+      <div class="simpleWrapper" v-else>
+        <div class="simple" :class="{loadIn: initialLoad}" ref="page">
           <slot></slot>
         </div>
       </div>
@@ -97,13 +125,15 @@ function click(e) {
   background: var(--background);
   overflow: hidden;
 
-  animation: paperUnwrap 5s cubic-bezier(0.72, 0.01, 0.32, 0.99);
-  animation-fill-mode: backwards;
-  //animation-delay: 2s;
-
   overflow: hidden;
   width: 100%;
-  //animation-play-state: paused;
+  
+  &.loadIn {
+    animation: paperUnwrap 5s cubic-bezier(0.72, 0.01, 0.32, 0.99);
+    animation-fill-mode: backwards;
+    //animation-delay: 2s;
+    //animation-play-state: paused;
+  }
 
   h1 { margin: 0px; }
 

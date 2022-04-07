@@ -8,7 +8,6 @@ import { watch, ref } from "vue";
 let scrollVelocity = ref(0);
 watch(velocity, (newVal) => {
   scrollVelocity.value = newVal;
-  console.log("velociffty:", newVal);
 });
 </script>
 

@@ -28,12 +28,10 @@ onMounted(() => {
 const shift = ref(true)
 
 onKeyStroke('Shift', (e) => {
-  console.log('Shift key down')
   shift.value = true
 })
 
 onKeyStroke('Shift', (e) => {
-  console.log('Shift key up')
   shift.value = false
 }, { eventName: 'keyup' })
 

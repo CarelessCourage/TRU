@@ -1,11 +1,11 @@
 <script setup>
 import { toRefs } from "vue";
-import { tileDims, limbo, duration, innerText } from "./utils.js"
+import { tileDims, limbo, limbodown, duration, innerText } from "./utils.js"
 const {width, height, left, top} = toRefs(tileDims)
 </script>
 
 <template>
-  <div id="limbo" :class="{'limbo-active': !limbo}">
+  <div id="limbo" :class="{'limbo-active': !limbo, limbodown: limbodown}">
 
     <div class="tile">
       <h3 data-slide>{{innerText}}</h3>
@@ -18,6 +18,12 @@ const {width, height, left, top} = toRefs(tileDims)
 </template>
 
 <style lang="scss" scope>
+  .gradient {
+    //opacity: 0.5 !important;
+    z-index: -9999;
+    position: relative;
+  }
+
   #limbo {
     --top: calc(v-bind(top) * 1px);
     --left: calc(v-bind(left) * 1px);
@@ -25,12 +31,17 @@ const {width, height, left, top} = toRefs(tileDims)
     --height: calc(v-bind(height) * 1px);
 
     position: fixed;
-    z-index: 10000;
+    z-index: 1000;
+    //z-index: -1;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
     pointer-events: none;
+
+    &.limbodown {
+      z-index: -1;
+    }
   }
 
   #limbo .tile {

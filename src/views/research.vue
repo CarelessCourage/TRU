@@ -17,7 +17,7 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
 <template>
 <PaperWrapper>
   <div class="infoxxx">
-    <h4>{{store.research.title}}</h4>
+    <h2 class="title">{{store.research.title}}</h2>
     <img :src="store.research.img" alt="{{store.research.title}}" data-speed="1.2" />
     
     <div class="contentx">
@@ -30,12 +30,10 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
     </div>
 
     <div class="contentx two">
-      <p>
+      <h4>
         Compiling and curating collections of typographic research and resources; 
-        celebrating the history of type and the cutting edge of type on the web
-        Compiling and curating collections of typographic research and resources; 
-        celebrating the history of type and the cutting edge of type on the web
-      </p>
+        celebrating the history of type and the cutting edge of type on the
+      </h4>
     </div>
 
     <div class="contentx three">
@@ -96,6 +94,17 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
   column-gap: 2em;
   min-height: 50em;
 
+  .title {
+    transform: scale(3);
+    transform-origin: top left;
+    opacity: 0.1;
+    padding-bottom: 1em;
+
+    grid-column: span 2;
+    text-transform: capitalize;
+    font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 0 !important;
+  }
+
   img {
     grid-column: 3/span 3;
     grid-row: 3;
@@ -116,6 +125,8 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
 
     &.two {
       //grid-column: span 3;
+      font-size: 1.2rem;
+      font-variation-settings: "wght" 900, "wdth" 200, "CNTR" 90 !important;
     }
 
     &.three {

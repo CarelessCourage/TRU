@@ -1,6 +1,7 @@
 import { reactive, ref } from "vue";
 
 export const limbo = ref(true)
+export const limbodown = ref(false)
 export const disabled = ref(true)
 
 export const duration = ref(0.8);

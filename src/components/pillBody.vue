@@ -10,21 +10,32 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const radius = ref(0);
-onMounted(() => {
-  gsap.to(window, {duration: 0, scrollTo: "0"});
-  setTimeout(() => {
-    gsap.to(window, {duration: 1, scrollTo: "400"});
-  }, duration.value * 500)
- 
-  gsap.to(radius, {
+let gsapID = null;
+function setGsap() {
+  if(gsapID) gsapID.scrollTrigger.kill();
+  gsapID = gsap.to(radius, {
     scrollTrigger: {
       trigger: ".pillBody",
       start: 'top bottom',
       end: '50px top',
       scrub: true,
+      markers: false
     },
     value: 1000,
   });
+}
+
+function setScroll() {
+  gsap.to(window, {duration: 0, scrollTo: "0"});
+  setTimeout(() => {
+    gsap.to(window, {duration: 1, scrollTo: "400"});
+    setGsap();
+  }, duration.value * 500)
+}
+
+onMounted(() => {
+  setScroll();
+  setGsap()
 })
 </script>
 

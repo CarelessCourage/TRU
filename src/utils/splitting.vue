@@ -1,7 +1,11 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import { gsap } from "gsap";
+import { onMounted, ref, watch } from "vue";
 import Splitting from "splitting";
+import { unwrap } from "../store/anim.js"
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps({
   delay: Number
@@ -10,13 +14,22 @@ const props = defineProps({
 const splitting = ref(null)
 const enableClass = ref(null)
 
+function scrollRefresh() {
+  ScrollTrigger.refresh();
+}
+
+watch(unwrap, () => {
+  console.log("unwrap");
+  scrollRefresh();
+})
+
 onMounted(() => {
   Splitting({target: "[data-slide]"});
   Splitting({target: "[data-line]", by: 'lines', whitespace: true });
 
   gsap.from(splitting.value, { scrollTrigger: {
     trigger: splitting.value,
-    start: 'top 85%',
+    start: 'top bottom',
     end: 'bottom 85%',
     onEnter: () => enableClass.value = true,
     onLeaveBack: () => enableClass.value = false,
@@ -26,7 +39,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="splitWrapper" :class="{enable: enableClass}" ref="splitting">
+  <div class="splitWrapper" :class="{enable: enableClass}" ref="splitting" @click="scrollRefresh">
     <slot></slot>
   </div>
 </template>

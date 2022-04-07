@@ -36,11 +36,13 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
+
 .headerGradient {
   height: 100vh;
+  //max-height: 100vh;
   min-width: 100vw;
   max-width: 100vw;
-  background: var(--flavor);
+  //background: var(--flavor);
   margin: 0px;
   top: 0px;
   left: 0px;
@@ -87,12 +89,13 @@ onMounted(() => {
 .banner { 
   width: 100vw;
   height: 100vh;
-  background: var(--background);
-  background: var(--flavor);
+  //background: var(--background);
+  //background: var(--flavor);
   position: fixed;
   top: 0;
   left: 0;
   .gradient {
+    position: fixed;
     animation: upeer 1.2s backwards ease-in-out;
   }
 }

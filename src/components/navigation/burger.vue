@@ -40,6 +40,21 @@ defineProps({
     background: var(--background);
     transition: 0.2s ease-in-out;
 
+    animation: slideIn 0.8s ease-in-out;
+    animation-fill-mode: backwards;
+    animation-delay: 4.5s;
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translate(-2em, 2em);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(0em, 0em);
+      }
+    }
+
     @media (max-width: 800px) {
       top: 0.2em; right: 0.2em;
     }

@@ -16,7 +16,7 @@ onMounted(() => {
 
 <template>
   <PaperWrapper>
-    <div class="content">
+    <div class="content padding">
       <Combobox/>
       <List>
         <h1>Accademic Research</h1>
@@ -27,7 +27,7 @@ onMounted(() => {
         </p>
       </List>
       <List>
-        <h1>Accademic Research</h1>
+        <h1>Lessons in Web Type</h1>
         <p data-speed="1.2">
           This is a list of research publications related to typography. 
           It is gathered by TRU users and curated by the TRU team. 

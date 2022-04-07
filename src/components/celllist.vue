@@ -6,9 +6,26 @@ import { array, setResearch } from "../store/index.js"
 import { useInterval } from '@vueuse/core'
 import { gsap } from "gsap";
 
+function randomIntFromInterval(min, max) { 
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+const slowProgress = ref(0)
+
 onMounted(() => {
-  const tl = gsap.timeline({repeat: -1, yoyo: true, repeatDelay: 4});
-  let from = "random";
+
+  const tl = gsap.timeline({
+    repeat: -1, 
+    yoyo: true, 
+    repeatDelay: 4,
+    onUpdate() { slowProgress.value = this.progress() }
+  });
+
+  //console.log(tl.totalDuration());
+  //console.log(tl.totalProgress());
+
+  let fromList = ["random", "start", "end", "center", "edges"];
+  let from = fromList[randomIntFromInterval(0, fromList.length - 1)];
 
   tl.to(".cell", {
     "--wgth": 0,
@@ -35,10 +52,6 @@ onMounted(() => {
   });
 })
 
-function randomIntFromInterval(min, max) { // min and max included 
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
-
 const active = ref(randomIntFromInterval(0, (array.length - 1)));
 const counter = useInterval(8000)
 watch(counter, (val) => {
@@ -47,7 +60,7 @@ watch(counter, (val) => {
 
 const router = useRouter()
 
-function click(index = 0) {
+function clickTo(index = 0) {
   setResearch(index)
   router.push({name: 'research'})
 }
@@ -79,6 +92,7 @@ function over(index) {
     <div class="redirect" @click="toArchive">
       <p>go to</p>
       <h3>Research Archive</h3>
+      <div class="loadingNext" :style="{ width: (slowProgress * 100) + '%' }"></div>
     </div>
     <div 
       v-for="(item, index) in array" 
@@ -86,6 +100,7 @@ function over(index) {
       class="cell"
       :class="{active: active === index}"
       @mouseenter="over(index)"
+      @click="clickTo(index)"
     >
       <h2>re<br>search</h2>
       <div class="about">
@@ -110,6 +125,29 @@ function over(index) {
   @media (max-width: 1000px) { grid-column: span 6; }
   @media (max-width: 650px) { grid-column: span 6; }
   @media (max-width: 450px) { grid-column: span 6; }
+
+  .loadingNext {
+    background-color: var(--flavor);
+    height: 0.5em;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+
+    //width: calc(v-bind(slowProgress) * 1%);
+
+    /*animation: loadNext 8s ease-in-out infinite;
+    animation-fill-mode: backwards;
+
+    @keyframes loadNext {
+      0% {
+        width: 0%;
+      }
+      100% {
+        width: 100%;
+      }
+    }*/
+  }
 
   p {
     opacity: 0.5;

@@ -5,6 +5,7 @@ import Carusel from "../components/pickCarusel.vue"
 import TextOcean from "../components/text-ocean/TextOcean.vue"
 import Resources from "../components/resources.vue"
 import CellList from "../components/celllist.vue"
+import Breaker from "../components/breaker.vue"
 
 import Goblet from "../components/narrative/goblet.vue"
 import { onMounted} from "vue"
@@ -22,30 +23,39 @@ onMounted(() => {
 
 <template>
   <PaperWrapper>
-    <div class="content">
-      <div class="slug">
-        <TypeXray>Typographic <br> Research <br>Unit</TypeXray>
-      </div>
-      <div class="navMeta">
-        <p class="details one">Navigation <br> index</p>
-        <p class="details">Interact with the menu on the right to open the site index and navigate to any other page</p>
+    <div class="content ">
+      <div class="padding">
+        <div class="slug">
+          <TypeXray>Typographic <br> Research <br>Unit</TypeXray>
+        </div>
+        <div class="navMeta">
+          <p class="details one">Navigation <br> index</p>
+          <p class="details">Interact with the menu on the right to open the site index and navigate to any other page</p>
+        </div>
+
+        <div class="pitch" data-speed="0.9">
+          <h3>Compiling and <span>curating</span> collections of typographic research and resources; 
+            celebrating the history of type and the <span>cutting edge</span> of type on the web
+          </h3>
+        </div>
+
+        <div class="box3">
+          <p class="details">Click and drag the titles below. Its an infinite scroll listing featured essays on typography</p>
+        </div>
+
+        <div class="w" v-if="true"  data-speed="1.2">
+          <Carusel/>
+        </div>
       </div>
 
-      <div class="pitch" data-speed="0.9">
-        <h3>Compiling and <span>curating</span> collections of typographic research and resources; 
-          celebrating the history of type and the <span>cutting edge</span> of type on the web
-        </h3>
+      <Breaker/>
+
+      <div class="padding">
+        <CellList v-if="true"/>
       </div>
 
-      <div class="box3">
-        <p class="details">Click and drag the titles below. Its an infinite scroll listing featured essays on typography</p>
-      </div>
-
-      <div class="w" v-if="true"  data-speed="1.2">
-        <Carusel/>
-      </div>
-
-      <CellList v-if="true"/>
+      <Breaker/>
+      
 
       <Resources v-if="false">
         <h1>Accademic Research</h1>
@@ -125,6 +135,11 @@ onMounted(() => {
 .pitch {
   grid-column: 3 / span 3;
   @media (max-width: 650px) { grid-column: span 6;}
+
+  animation: slideIn 0.4s ease-in-out;
+  animation-fill-mode: backwards;
+  animation-delay: 3s;
+
   & > * {
     max-width: 33ch;
   } 
@@ -138,10 +153,15 @@ onMounted(() => {
 }
 
 .simple .content {
-  padding: 1em 3em 12em;
+  padding: 0px;
+}
+
+.simple .padding {
+  grid-column: span 6;
   display: grid; gap: 2em;
   grid-template-columns: repeat(6, 1fr);
-  @media (max-width: 400px) { padding: 1em 0em 12em; }
+  padding: 2em 3em 4em;
+  @media (max-width: 400px) { padding: 2em 0em 4em; }
 }
 
 .box h2  {
@@ -170,6 +190,10 @@ onMounted(() => {
 
   grid-column: 6;
 
+  animation: slideIn 0.4s ease-in-out;
+  animation-fill-mode: backwards;
+  animation-delay: 4s;
+
   @media (max-width: 1100px) { grid-column: 4 / span 2;}
   @media (max-width: 800px) { grid-column: 3 / span 3;}
   @media (max-width: 650px) {grid-column: 4 / span 2;}
@@ -180,6 +204,17 @@ onMounted(() => {
     line-height: 0.8rem;
     margin-bottom: 1rem;
     font-variation-settings: "wght" 900, "wdth" 90, "CNTR" 0;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(2em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0em);
   }
 }
 </style>
