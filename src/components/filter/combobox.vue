@@ -1,30 +1,40 @@
 <script setup>
-import Multiselect from '../filter/multiselect.vue'
+import Multiselect from './multiselect.vue'
+import MultiselectSort from './multiselectSort.vue'
+import Search from './search.vue'
+
 import "@fortawesome/fontawesome-free/css/all.css";
 
 import {ref} from "vue"
 
 const activeTab = ref("search")
+const sortUp = ref(false)
+
+function sortClick() {
+  console.log("sortClick");
+  sortUp.value = !sortUp.value
+}
 </script>
 
 <template>
 <div class="comboBox" data-speed="0.8">
   <ul class="tabs">
     <li :class="{active: activeTab === `search`}" @click="activeTab = `search`"><p class="web">Search</p></li>
-    <li :class="{active: activeTab === `tags`}" @click="activeTab = `tags`"><p class="web">Tags</p></li>
+    <li :class="{active: activeTab === `tags`}" @click="activeTab = `tags`"><p class="web">Filter</p></li>
     <li :class="{active: activeTab === `sort`}" @click="activeTab = `sort`"><p class="web">Sort</p></li>
   </ul>
-  <div class="flex web text" v-if="activeTab === `search`">
+  <div class="flex web text" v-show="activeTab === `search`">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <Multiselect/>
+    <Search/>
   </div>
-  <div class="flex web text" v-if="activeTab === `tags`">
+  <div class="flex web text" v-show="activeTab === `tags`">
     <i class="fa-solid fa-tags"></i>
     <Multiselect/>
   </div>
-  <div class="flex web text" v-if="activeTab === `sort`">
-    <i class="fa-solid fa-arrow-up-short-wide"></i>
-    <Multiselect/>
+  <div class="flex web text sort" v-show="activeTab === `sort`">
+    <div v-if="sortUp" class="i" @click="sortClick"><i class="fa-solid fa-arrow-up-short-wide"></i></div>
+    <div v-if="!sortUp" class="i" @click="sortClick"><i class="fa-solid fa-arrow-down-short-wide"></i></div>
+    <MultiselectSort/>
   </div>
 </div>
 </template>
@@ -40,11 +50,33 @@ const activeTab = ref("search")
 .comboBox {
   position: relative;
   margin-bottom: var(--marginxx);
-  svg, i {
+
+  .flex > svg,
+  .flex > i,
+  .flex > .i {
     left: 16px;
     position: absolute;
     z-index: 1;
+    transition: .4s ease-in-out;
   }
+
+  .sort .i {
+    cursor: pointer;
+  }
+
+  .sort .i:hover {
+    left: 0px;
+    background-color: var(--flavor);
+    padding: 16px;
+    border-radius: 6px;
+  }
+
+  .sort .i:active {
+    background-color: var(--background);
+    padding: 10px 16px;
+    transition: .2s ease-in-out;
+  }
+
   ul.tabs {
     display: flex;
     gap: calc(var(--margin) / 3);

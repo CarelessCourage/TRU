@@ -5,20 +5,7 @@ import '@vueform/multiselect/themes/default.css'
 import { ref } from "vue"
 
 const value = ref(null);
-const options = ref([
-  {
-    label: 'Your Tags',
-    options: ['Favorites', 'Saved'],
-  },
-  {
-    label: 'Site Tags',
-    options: ['essays', 'Accademic Research', 'Web Type', 'Type Lessons'],
-  },
-  {
-    label: 'Media Tags',
-    options: ['Inspirational Web', 'Inspirational Print'],
-  },
-])
+const options = ref([])
 
 function testOption(what) {
   console.log("lol: ", what);
@@ -29,12 +16,10 @@ function testOption(what) {
 <template>
 <Multiselect
   v-model="value"
-  :options="options"
-  :groups="true"
   :createTag="true"
   :searchable="true"
   mode="tags"
-  placeholder="Filter content"
+  placeholder="Search content"
   @select="(lol) => testOption(lol)"
   class="text web"
 >
@@ -132,7 +117,6 @@ li.multiselect-option {
     overflow: hidden;
     animation-name: growIn;
     animation-duration: .2s;
-    color: var(--foreground);
   }
 
   @keyframes growIn {

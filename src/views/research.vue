@@ -18,7 +18,7 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
 <PaperWrapper>
   <div class="infoxxx">
     <h4>{{store.research.title}}</h4>
-    <img :src="store.research.img" alt="{{store.research.title}}" />
+    <img :src="store.research.img" alt="{{store.research.title}}" data-speed="1.2" />
     
     <div class="contentx">
       <p>
@@ -45,19 +45,56 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
         Compiling and curating collections of typographic research and resources; 
         celebrating the history of type and the cutting edge of type on the web
       </p>
-      <a :href="store.research.url"><p class="details">Go to Source - <br> @source.com</p></a>
+
+      <div class="btn-box">
+        <button>
+          <i class="fa-brands fa-sourcetree"></i>
+          <p class="">Go to Source</p>
+        </button>
+        <button class="favorite">
+          <i class="fa-solid fa-star-of-life"></i>
+          <p>Favorite this</p>
+        </button>
+        <button class="save">
+          <i class="fa-solid fa-bookmark"></i>
+          <p>Save this</p>
+        </button>
+      </div>
     </div>
   </div>
 </PaperWrapper>
 </template>
 
 <style lang="scss">
+.btn-box {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  margin-top: 3em;
+  button {
+    color: var(--foreground);
+    background: var(--shade);
+    background: transparent;
+    //border-radius: 6px;
+    min-height: 0px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: start;
+    align-items: center;
+    padding: 0em;
+    text-align: left;
+    gap: 1em;
+  }
+}
+
 .infoxxx {
   padding: 3em 3em 0em;
   display: grid;
   grid-template-columns: 2fr 1fr 3fr repeat(2, 1fr);
+  grid-template-rows: auto auto 1fr;
   row-gap: 1rem;
   column-gap: 2em;
+  min-height: 50em;
 
   img {
     grid-column: 3/span 3;
@@ -65,6 +102,8 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
     object-fit: cover;
     height: 60vh;
     width: 100%;
+    position: relative;
+    z-index: -1;
   }
 
   h3 {

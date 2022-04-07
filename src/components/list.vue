@@ -8,6 +8,11 @@ function click(index = 0) {
   setResearch(index)
   router.push({name: 'research'})
 }
+
+function getFirst(item, check = "undefined") {
+  let result = item.userTags[0]
+  return result !== check ? result : false
+}
 </script>
 
 <template>
@@ -16,6 +21,12 @@ function click(index = 0) {
   </div>
   <div class="list">
     <div v-for="(item, index) in array" :key="index" class="list-item" @click="click(index)">
+      <div class="userTag" v-if="getFirst(item, 'favorite')">
+        <i class="fa-solid fa-star-of-life"></i>
+      </div>
+      <div class="userTag" v-if="getFirst(item, 'saved')">
+        <i class="fa-solid fa-bookmark"></i>
+      </div>
       <p class="list-item-title">{{item.title}}</p>
       <p class="details">{{item.datetime}}</p>
     </div>
@@ -49,6 +60,7 @@ function click(index = 0) {
   grid-template-columns: repeat(4, 1fr);
   grid-column: span 5;
   column-gap: 2em;
+  row-gap: 1em;
   text-transform: uppercase;
   margin-bottom: 5em;
   //padding: 2em 0px;
@@ -64,13 +76,37 @@ function click(index = 0) {
 
 .list-item {
   grid-column: span 2;
-  margin-bottom: 1em;
+  //margin-bottom: 1em;
   display: grid;
   grid-template-columns: 1fr;
-  //padding-bottom: 0.5em;
+  grid-template-rows: auto 1fr;
+  position: relative;
   cursor: pointer;
 
   transition: 0.4s ease-in-out;
+
+  @media (max-width: 1270px) {
+    grid-column: span 4;
+  }
+
+  .userTag {
+    //text-transform: lowercase;
+    //opacity: 0.3;
+    //justify-self: end;
+    position: absolute;
+    z-index: -1;
+    left: -1.3rem;
+    //top: -1.5rem;
+    //opacity: 0.3;
+
+    i, svg {
+      color: var(--flavor);
+      font-size: 1rem;
+      &.fa-bookmark {
+        color: var(--shade);
+      }
+    }
+  }
 
   p {
     transition: 0.2s ease-in-out;

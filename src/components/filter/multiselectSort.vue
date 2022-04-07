@@ -6,18 +6,9 @@ import { ref } from "vue"
 
 const value = ref(null);
 const options = ref([
-  {
-    label: 'Your Tags',
-    options: ['Favorites', 'Saved'],
-  },
-  {
-    label: 'Site Tags',
-    options: ['essays', 'Accademic Research', 'Web Type', 'Type Lessons'],
-  },
-  {
-    label: 'Media Tags',
-    options: ['Inspirational Web', 'Inspirational Print'],
-  },
+  {label: 'Age of Sorce'},
+  {label: 'Date Added'},
+  {label: 'Alphabetical'},
 ])
 
 function testOption(what) {
@@ -30,11 +21,9 @@ function testOption(what) {
 <Multiselect
   v-model="value"
   :options="options"
-  :groups="true"
-  :createTag="true"
   :searchable="true"
   mode="tags"
-  placeholder="Filter content"
+  placeholder="Sort content"
   @select="(lol) => testOption(lol)"
   class="text web"
 >
