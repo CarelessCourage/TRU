@@ -94,7 +94,7 @@ onMounted(() => {
       <NewsTile/>
     </div>
 
-    <div class="goblet" v-if="false">
+    <div class="goblet" v-if="true">
       <Goblet/>
     </div>
   </PaperWrapper>

@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue"
 import useNavigation from "./navigation/store";
-import { setUnwrap, setVelocity, initialLoad } from "../store/anim.js"
+import { setUnwrap, setVelocity, initialLoad, velocity } from "../store/anim.js"
 
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
@@ -43,6 +43,10 @@ function setScrollSmoothActiveUpdate() {
   reqAnimationId = requestAnimationFrame(setScrollSmoothActiveUpdate)
 }
 
+function clamp(number, min, max) {
+  return Math.max(min, Math.min(number, max));
+}
+
 function setScrollSmooth() {
   if(scrollSmooth) scrollSmooth.kill()
   scrollSmooth = ScrollSmoother.create({
@@ -50,7 +54,18 @@ function setScrollSmooth() {
     effects: true,
     smoothTouch: 0.1,
     onUpdate: self => {
-      setVelocity((Math.abs(self.getVelocity()) / 1000) - 0.5);
+      let velocity = (Math.abs(self.getVelocity()) / 1000) / 2
+
+      let binaryVel = clamp(velocity, 0, 1)
+      let bvResult = 0
+      
+      if(binaryVel < 0.5) {
+        bvResult = 0
+      } else {
+        bvResult = 1
+      }
+
+      setVelocity(bvResult);
     }
   });
 }
@@ -62,7 +77,7 @@ function setScrollSmooth() {
       <div class="noPaper" ref="page" v-if="props.disablePaper">
         <slot></slot>
       </div>
-      <div class="simpleWrapper" v-else>
+      <div class="simpleWrapper" :style="'filter: invert(' + velocity + ') hue-rotate(' + velocity * 100 + 'deg);'" v-else>
         <div class="simple" :class="{loadIn: initialLoad}" ref="page">
           <slot></slot>
         </div>
@@ -88,6 +103,11 @@ function setScrollSmooth() {
 
   animation: colorShift 1.2s backwards ease-in-out;
   animation-delay: 0.8s;
+
+  transition: 1.5s ease-in-out;
+
+  //--vel: v-bind(velocity);
+  //filter: invert(var(--vel)) hue-rotate(90deg);
 
   &::after{
     content: ""; opacity: 0;

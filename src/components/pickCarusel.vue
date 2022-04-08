@@ -201,6 +201,7 @@ function clickUp(box) {
 .carousel__next {
   box-sizing: content-box;
   border: 5px solid white;
+  opacity: 0;
 }
 
 .carousel__slide > .carousel__item {

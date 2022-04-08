@@ -23,7 +23,10 @@ onMounted(() => {
   <div class="headerGradient">
 
     <div class="textPath" v-if="true">
-      <Convey :textPaths="textPaths[1]" tightness="-13%" :scoped="{ start: 'top', end: 'bottom' }" v-if="true"/>
+      <Convey 
+        :textPaths="textPaths[1]" 
+        tightness="-13%" 
+        :scoped="{ start: 'top', end: 'bottom' }" v-if="true"/>
     </div>
     <div class="banner" ref="banner" v-if="true">
       <div class="gradient"></div>
