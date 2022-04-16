@@ -169,15 +169,15 @@ function clickUp(box) {
     & > *:not(p) {
       font-variation-settings: 
         "wght" 600, 
-        "wdth" 100, 
+        "wdth" 80, 
         "CNTR" 0;
     }
     p.redirect {
-      transform: scale(5) translate(-1em, 0.4em);
+      transform: scale(2) translate(-0em, 0.4em);
       opacity: 0.1;
       font-variation-settings: 
         "wght" 900, 
-        "wdth" 100, 
+        "wdth" 200, 
         "CNTR" 0;
     }
   }

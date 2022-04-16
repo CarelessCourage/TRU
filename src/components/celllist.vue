@@ -102,7 +102,7 @@ function over(index) {
       @mouseenter="over(index)"
       @click="clickTo(index)"
     >
-      <h2>re<br>search</h2>
+      <h2 v-if="false">re<br>search</h2>
       <div class="about">
         <p class="cell-title">{{item.title}}</p>
         <p class="details">{{item.datetime}}</p>
@@ -244,7 +244,7 @@ function over(index) {
 .cell {
   cursor: pointer;
   min-width: 0px;
-  min-height: 0px;
+  min-height: 7em;
   //background: var(--flavor);
   position: relative;
 

@@ -3,6 +3,7 @@ import { onMounted } from "vue"
 import PaperWrapper from "../components/paperWrapper.vue"
 import Combobox from "../components/filter/combobox.vue"
 import List from "../components/list.vue"
+import MediaList from "../components/imglist.vue"
 
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -26,14 +27,14 @@ onMounted(() => {
           Feel free to submit any suggestions along with a short abstract to our official email address: research@tru.com
         </p>
       </List>
-      <List>
+      <MediaList>
         <h1>Lessons in Web Type</h1>
         <p data-speed="1.2">
           This is a list of research publications related to typography. 
           It is gathered by TRU users and curated by the TRU team. 
           Feel free to submit any suggestions along with a short abstract to our official email address: research@tru.com
         </p>
-      </List>
+      </MediaList>
     </div>
   </PaperWrapper>
 </template>

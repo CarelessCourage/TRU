@@ -61,6 +61,8 @@ p, button {
   font-variation-settings: "wght" 400, "wdth" 100, "CNTR" 0;
   span {
     font-variation-settings: "wght" 500, "wdth" 100, "CNTR" 0;
+  }
+  &:not(.splitting) span {
     background: var(--flavor);
   }
   &.bold span:not(.word) {

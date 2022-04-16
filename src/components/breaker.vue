@@ -22,7 +22,7 @@ function setGsap() {
       start: 'top bottom',
       end: '100px top',
       scrub: true,
-      markers: true
+      markers: false
     },
     value: 1000,
   });
