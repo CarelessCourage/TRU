@@ -4,6 +4,8 @@ import { unwrap } from "../store/anim.js"
 
 import Convey from "./textpaths/convey.vue"
 import textPaths from "../components/textpaths/configs/textpaths";
+import ImageComponent from "../components/imageComponent.vue"
+import mediaArray from "../store/media.js"
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,7 +14,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const radius = ref(0);
-let cap = ref(null)
+let cap = ref(null);
 let gsapID = null;
 function setGsap() {
   if(gsapID) gsapID.scrollTrigger.kill();
@@ -44,9 +46,11 @@ onMounted(() => {
   </div>
   <div class="base">
     <div class="text" data-speed="0.4">
-      <Convey 
-        :textPaths="textPaths[2]" 
-        tightness="-13%" 
+      <ImageComponent :item="mediaArray[0]" v-if="false"/>
+      <Convey
+        v-if="false"
+        :textPaths="textPaths[2]"
+        tightness="-13%"
         :scoped="{ start: 'top', end: 'bottom' }"
       />
     </div>
@@ -86,10 +90,8 @@ onMounted(() => {
     border-top-right-radius: var(--rounded);
 
     h1 {
-      //letter-spacing: calc(-3rem + var(--rounded));
       line-height: 1.1;
       font-size: 8rem;
-      //text-transform: uppercase;
       color: var(--background);
       font-variation-settings: 
         "wght" v-bind(radius), 
@@ -100,6 +102,10 @@ onMounted(() => {
     background-color: var(--shade);
     width: 100%; min-height: 40em;
     opacity: 1;
+
+    .mediaImg {
+      width: 15em;
+    }
   }
 }
 </style>

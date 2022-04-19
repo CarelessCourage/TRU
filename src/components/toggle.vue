@@ -22,9 +22,9 @@ defineProps({
 }
 
 .switch {
-    --line: #505162;
-    --dot: #F7F8FF;
-    --circle: #9EA0BE;
+    --line: var(--shade);
+    --dot: var(--flavor);
+    --circle: var(--foreground);
     --duration: .3s;
     --text: #9EA0BE;
     --capRadius: 50%;

@@ -1,4 +1,5 @@
 <script setup>
+import CurateBtnPanel from "../components/curateBtnPanel.vue"
 import PaperWrapper from "../components/paperWrapper.vue"
 import { store } from "../store/index.js"
 import { onMounted } from "vue";
@@ -44,19 +45,8 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
         celebrating the history of type and the cutting edge of type on the web
       </p>
 
-      <div class="btn-box">
-        <button>
-          <i class="fa-brands fa-sourcetree"></i>
-          <p class="">Go to Source</p>
-        </button>
-        <button class="favorite">
-          <i class="fa-solid fa-star-of-life"></i>
-          <p>Favorite this</p>
-        </button>
-        <button class="save">
-          <i class="fa-solid fa-bookmark"></i>
-          <p>Save this</p>
-        </button>
+      <div class="curWrapper" data-speed="0.8">
+        <CurateBtnPanel :item="store"/>
       </div>
     </div>
   </div>
@@ -64,35 +54,36 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
 </template>
 
 <style lang="scss">
-.btn-box {
-  display: flex;
-  gap: 1em;
-  flex-direction: column;
-  margin-top: 3em;
-  button {
-    color: var(--foreground);
-    background: var(--shade);
-    background: transparent;
-    //border-radius: 6px;
-    min-height: 0px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    justify-content: start;
-    align-items: center;
-    padding: 0em;
-    text-align: left;
-    gap: 1em;
+
+.infoxxx .curateBtnPanel {
+  margin-top: 4em;
+  .gradient, .yellow {
+    opacity: 0;
+    animation: fadeIn 1.2s backwards ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
 .infoxxx {
-  padding: 3em 3em 0em;
+  padding: 3em 3em 3em;
   display: grid;
-  grid-template-columns: 2fr 1fr 3fr repeat(2, 1fr);
+  grid-template-columns: 2fr 1fr 3fr 1fr 1fr;
   grid-template-rows: auto auto 1fr;
   row-gap: 1rem;
   column-gap: 2em;
   min-height: 50em;
+
+  @media (max-width: 750px) { 
+    grid-template-columns: 1fr 1fr;
+  }
 
   .title {
     transform: scale(3);
@@ -103,49 +94,49 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
     grid-column: span 2;
     text-transform: capitalize;
     font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 0 !important;
+
+    @media (max-width: 750px) { 
+      grid-column: span 2;
+    }
   }
 
   img {
     grid-column: 3/span 3;
-    grid-row: 3;
+    //grid-row: 3;
     object-fit: cover;
     height: 60vh;
     width: 100%;
     position: relative;
     z-index: -1;
+
+    @media (max-width: 750px) { 
+      grid-column: span 2;
+    }
   }
 
   h3 {
     grid-column: span 5;
+    @media (max-width: 750px) { 
+      grid-column: span 2;
+    }
   }
 
   .contentx {
-    grid-row: 2;
+    //grid-row: 2;
     grid-column: span 2;
 
     &.two {
-      //grid-column: span 3;
       font-size: 1.2rem;
       font-variation-settings: "wght" 900, "wdth" 200, "CNTR" 90 !important;
     }
 
-    &.three {
-     grid-row: 3;
-    }
-    p {
-      width: 100%;
+    &.three {grid-row: 3;}
+    p { width: 100%;}
+
+    @media (max-width: 750px) { 
+      grid-column: span 2;
     }
   }
-
-  a h4, a p{
-    margin-top: 20px;
-    transition: all 0.2s  ease-in-out;
-    &:hover {
-      background: var(--flavor);
-      opacity: 1;
-    }
-  }
-
 }
 
 </style>

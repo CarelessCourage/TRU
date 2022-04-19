@@ -5,6 +5,7 @@ import Carusel from "../components/pickCarusel.vue"
 import TextOcean from "../components/text-ocean/TextOcean.vue"
 import Resources from "../components/resources.vue"
 import CellList from "../components/celllist.vue"
+import MediaList from "../components/imglist.vue"
 import Breaker from "../components/breaker.vue"
 
 import Goblet from "../components/narrative/goblet.vue"
@@ -52,6 +53,12 @@ onMounted(() => {
 
       <div class="padding">
         <CellList v-if="true"/>
+      </div>
+
+      <Breaker/>
+
+      <div class="padding">
+        <MediaList v-if="true"/>
       </div>
 
       <Breaker/>
