@@ -153,6 +153,9 @@ function setScrollSmooth() {
     animation-fill-mode: backwards;
     //animation-delay: 2s;
     //animation-play-state: paused;
+    h1 {
+      animation: titleGrow 5s cubic-bezier(0.72, 0.01, 0.32, 0.99);
+    }
   }
 
   h1 { margin: 0px; }
@@ -163,6 +166,18 @@ function setScrollSmooth() {
 
   @media (max-width: 350px) {
     padding: 0em 1em 5em;
+  }
+}
+
+@keyframes titleGrow {
+  0% {
+   font-size: 1rem;
+  }
+  70% {
+   font-size: clamp(1rem, 6vw, 3rem);;
+  }
+  100% {
+    font-size: clamp(2rem, 6vw, 6rem);
   }
 }
 
@@ -197,4 +212,87 @@ function setScrollSmooth() {
     max-height: 500em;
   }
 }
+
+
+.tpt {
+  position: absolute;
+  left: 0px; top: 60vh;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+  .narrativex {
+    position: relative;
+    padding: 3em 3em 0em;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 1fr 1fr 1fr;
+    row-gap: 1rem;
+    column-gap: 2em;
+    overflow: hidden;
+
+    & > *:not(.empty) {
+      background-color: var(--background);
+    }
+
+    @media (max-width: 1000px) {
+      grid-template-columns: 1fr !important;
+      & > * {
+        grid-column: span 1 !important;
+      }
+    }
+
+    .title {
+      grid-column: span 5;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+
+    h3 {
+      line-height: 1;
+      //margin-bottom: 10px;
+    }
+
+    p.full {
+      grid-column: 1 / -1;
+    }
+
+    p.enlargen {
+      grid-column: span 5;
+      font-size: 2.5rem;
+      line-height: 1.4;
+      &.two {
+        grid-column: span 6;
+        span {
+          font-size: 3.5rem;
+          line-height: 0.8;
+        }
+      }
+    }
+    p.enlargenminus {
+      grid-column: 2 / span 4;
+      //font-size: 2rem;
+      //line-height: 1.4;
+    }
+    p.enlargenpure {
+      grid-column: 2 / span 4;
+      //font-size: 2rem;
+      //line-height: 1.4;
+    }
+
+    p {
+      grid-column: span 2;
+      font-size: 1rem;
+      span {
+        //font-size: 1rem;
+        font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 90;
+        background: var(--flavor);
+      }
+    }
+
+    p.three {
+      grid-column: span 3;
+      font-size: 1rem;
+    }
+  }
 </style>

@@ -82,7 +82,7 @@ function clickUp(component = 'info') {
       <div :style="fromCenter(index).string" class="container">
         <p class="title details">{{box.title}}</p>
         <h2>{{box.quote}}</h2>
-        <p class="redirect">- read more</p>
+        <p class="redirect">by {{box.author}}</p>
       </div>
     </div>
   </div>

@@ -56,10 +56,16 @@ watch(velocity, (newVal) => {
   //min-width: 101vw;
 }
 
-.marked * {
+.marked > *,
+.marked > * *  {
   border: solid rgb(223, 144, 223) 2px;
   letter-spacing: 2px;
   transition: all 0.4s ease-in-out;
+}
+
+.marked > *:hover * {
+  border: solid rgb(223, 144, 223) 0px;
+  letter-spacing: 0px;
 }
 
 html {

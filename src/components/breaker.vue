@@ -7,6 +7,9 @@ import textPaths from "../components/textpaths/configs/textpaths";
 import ImageComponent from "../components/imageComponent.vue"
 import mediaArray from "../store/media.js"
 
+import TextOcean from "../components/text-ocean/TextOcean.vue"
+import { duration } from "../components/tiles/utils.js";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -36,16 +39,20 @@ watch(unwrap, () => {
 
 onMounted(() => {
   setGsap()
+  setTimeout(() => {
+    setGsap();
+  }, duration.value * 500)
 })
 </script>
 
 <template>
-<div class="breaker">
+<div class="breaker" @click="setGsap">
   <div class="cap" ref="cap" data-speed="1.3">
-    <h1 class="element" data-speed="0.5">...<br> breaks <br>...</h1>
+    <h1 class="element" data-speed="0.5">breaks</h1>
   </div>
   <div class="base">
     <div class="text" data-speed="0.4">
+      <TextOcean/>
       <ImageComponent :item="mediaArray[0]" v-if="false"/>
       <Convey
         v-if="false"

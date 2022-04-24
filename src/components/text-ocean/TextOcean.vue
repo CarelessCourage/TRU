@@ -15,7 +15,7 @@ useFitt("#fitty");
         ref="slot"
       >
         <FittyText>
-          <slot>Type Structure. The DNA of human language</slot>
+          <slot>Typography. The DNA of human language</slot>
         </FittyText>
       </div>
     </div>
@@ -35,7 +35,7 @@ useFitt("#fitty");
 
 #oceanWrapper {
   //padding: 40vh 0px;
-  transform: scale(8) rotate(45deg);
+  transform: scale(8) rotate(45deg) translateX(25em);
   transform-origin: center center;
   width: 100%;
   overflow: hidden;

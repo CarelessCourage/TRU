@@ -9,13 +9,16 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+const pillbody = ref(null)
+
 const radius = ref(0);
 let gsapID = null;
 function setGsap() {
+  console.log("setGsap: ", pillbody.value);
   if(gsapID) gsapID.scrollTrigger.kill();
   gsapID = gsap.to(radius, {
     scrollTrigger: {
-      trigger: ".pillBody",
+      trigger: pillbody.value,
       start: 'top bottom',
       end: '50px top',
       scrub: true,
@@ -29,7 +32,7 @@ function setScroll() {
   gsap.to(window, {duration: 0, scrollTo: "0"});
   setTimeout(() => {
     gsap.to(window, {duration: 1, scrollTo: "400"});
-    setGsap();
+    //setGsap();
   }, duration.value * 500)
 }
 
@@ -40,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pillBody">
+  <div class="pillBody" @click="setGsap" ref="pillbody">
     <div class="body paragraphs">
       <div class="content">
         <slot></slot>
@@ -61,6 +64,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  max-width: 45em;
 }
 
 .pillBody {

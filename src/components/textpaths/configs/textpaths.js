@@ -128,8 +128,79 @@ const textPaths3 = [
   }
 ]
 
+const textPaths4 = [
+  {
+    offset: 800,
+    speedFactor: 1,
+    blurMin: 2,
+    blurFactor: 3,
+    forward: true,
+    path: paths[5],
+    text: "the machine and the mind"
+  },
+  {
+    offset: 400,
+    speedFactor: 1.1,
+    blurMin: 0,
+    blurFactor: 2,
+    forward: true,
+    path: paths[0],
+    text: "call for clarity",
+  },
+  {
+    offset: 600,
+    speedFactor: 1.5,
+    blurMin: 3,
+    blurFactor: 5,
+    forward: true,
+    path: paths[1],
+    text: "call for contrast"
+  },
+  {
+    offset: 700,
+    speedFactor: 1.7,
+    blurMin: 1,
+    blurFactor: 3,
+    forward: true,
+    path: paths[0],
+    text: "cultural consciousness"
+  }
+]
+
+const textPaths5 = [
+  {
+    offset: 500,
+    speedFactor: 1.2,
+    blurMin: 0,
+    blurFactor: 2,
+    forward: true,
+    path: paths[5],
+    text: "character of the designer"
+  },
+  {
+    offset: 600,
+    speedFactor: 1.5,
+    blurMin: 3,
+    blurFactor: 5,
+    forward: true,
+    path: paths[5],
+    text: "rationalize the creative"
+  },
+  {
+    offset: 700,
+    speedFactor: 1.7,
+    blurMin: 1,
+    blurFactor: 3,
+    forward: true,
+    path: paths[5],
+    text: "creative spirit"
+  }
+]
+
 export default [
   textPaths1,
   textPaths2,
-  textPaths3
+  textPaths3,
+  textPaths4,
+  textPaths5
 ]

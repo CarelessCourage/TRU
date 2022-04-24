@@ -30,13 +30,13 @@ onMounted(() => {
           <TypeXray>Typographic <br> Research <br>Unit</TypeXray>
         </div>
         <div class="navMeta">
-          <p class="details one">Navigation <br> index</p>
-          <p class="details">Interact with the menu on the right to open the site index and navigate to any other page</p>
-        </div>
+         </div>
 
         <div class="pitch" data-speed="0.9">
-          <h3>Compiling and <span>curating</span> collections of typographic research and resources; 
-            celebrating the history of type and the <span>cutting edge</span> of type on the web
+          <h2>About</h2>
+          <h3>
+            Compiling and <span>curating</span> collections of typographic research and resources; 
+            celebrating the history of type and the cutting edge of type <span>communication</span>
           </h3>
         </div>
 
@@ -45,6 +45,7 @@ onMounted(() => {
         </div>
 
         <div class="w" v-if="true"  data-speed="1.2">
+          <p data-speed="1.4">Essays related to typography. These essays are uniqley crafted to break apart each paragraph into grid cells</p>
           <Carusel/>
         </div>
       </div>

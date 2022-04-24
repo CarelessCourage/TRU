@@ -26,14 +26,17 @@ const scrollMaxValue = 1100;
 let scroll = ref(0);
 onMounted(() => {
   setGsap();
-  //setScroll();
+  setScroll();
 })
 
 const { inertia } = useInertia(scroll, scrollMaxValue);
 const { pathRef, direction } = useDirection(scroll);
 
+let gsapID = null;
+
 function setGsap() {
-  gsap.to(scroll, {
+  if(gsapID) gsapID.scrollTrigger.kill();
+  gsapID = gsap.to(scroll, {
     scrollTrigger: {
       trigger: svgRef.value,
       start: props.scoped.start +  " center",
@@ -76,16 +79,11 @@ function setScroll() {
     padding: 20em 0px 20em;
 
     width: 100vw;
-    //min-height: 100vh;
-    //background-color: var(--background);
-    //background: pink;
-
     overflow: hidden;
     max-width: 100vw;
 
     svg {
       margin-bottom: v-bind(tightness);
-      //margin-bottom: -13%;
       transition: .1s ease-in-out;
     }
   }

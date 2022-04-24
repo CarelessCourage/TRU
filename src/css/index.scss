@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap');
 
 $mobile: 360px;
 $phablet: 540px;
@@ -23,7 +24,7 @@ h1, h2, h3, p.details, button {
 }
 
 h1 {
-  text-transform: capitalize;
+  text-transform: uppercase;
   line-height: 0.9;
   font-size: clamp(2rem, 6vw, 6rem);
   letter-spacing: -3px;
@@ -31,26 +32,77 @@ h1 {
 }
 
 h1.element {
+  text-transform: capitalize;
   --type: clamp(7rem, 15vw, 10rem);
   font-size: var(--type);
-  line-height: 1;
+  line-height: 1.2;
   text-align: center;
   font-variation-settings: "wght" var(--text-weight), "wdth" 100, "CNTR" var(--text-contrast);
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   line-height: 1.2;
-  font-variation-settings: "wght" 600, "wdth" 100, "CNTR" 20;
+  font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 40;
+  //text-transform: capitalize;
 }
 
 h3 {
   font-size: 1.5rem;
-  font-variation-settings: "wght" 300, "wdth" 100, "CNTR" 20;
+  font-variation-settings: "wght" 300, "wdth" 100, "CNTR" 40;
+  &:not(.splitting) span {
+    font-variation-settings: "wght" 500, "wdth" 100, "CNTR" 0;
+    background: var(--flavor);
+  }
+}
+
+h3.bold {
+  font-size: 2rem;
+  font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 30;
+  text-transform: inherit;
+  span {
+    font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 0;
+    //background: var(--flavor);
+  }
+}
+
+h3.pullquote {
+  position: relative;
+  quotes: "“" "”" "‘" "’";
+  font-size: 1.5rem;
+  font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 90;
   span {
     font-variation-settings: "wght" 500, "wdth" 100, "CNTR" 0;
     background: var(--flavor);
   }
+
+  &::before, &::after {
+    font-size: 8rem;
+    line-height: 1;
+    margin: 0px;
+    padding: 0px;
+    //background-color: red;
+    z-index: -1;
+    opacity: 0.1;
+    position: absolute;
+    font-family: 'BIZ UDPMincho', serif;
+  }
+
+  &::before { 
+    content: open-quote;
+    left: -3rem;
+    top: -1rem;
+  }
+  &::after { 
+    content: close-quote;
+    right: 1rem;
+    bottom: -7rem;
+  }
+}
+
+h4 {
+  font-size: 0.9rem;
+  //font-variation-settings: "wght" 300, "wdth" 100, "CNTR" 40;
 }
 
 p, button {
@@ -59,23 +111,16 @@ p, button {
   letter-spacing: 0px;
   max-width: 55ch;
   font-variation-settings: "wght" 400, "wdth" 100, "CNTR" 0;
-  span {
-    font-variation-settings: "wght" 500, "wdth" 100, "CNTR" 0;
-  }
-  &:not(.splitting) span {
-    background: var(--flavor);
-  }
-  &.bold span:not(.word) {
-    font-size: 1.3rem;
+  .span {
     font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 0;
+    background: var(--flavor);
   }
 }
 
 p.details {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   line-height: 1.1rem;
   font-variation-settings: "wght" 100, "wdth" 100, "CNTR" 0;
-  font-style: italic;
 }
 
 button {

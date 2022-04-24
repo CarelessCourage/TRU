@@ -7,8 +7,14 @@ import Simple from "../views/simple.vue"
 import Research from "../views/research.vue"
 import Herbert from "../views/herbert.vue"
 import Josef from "../views/josef.vue"
+import Hirarchy from "../views/hirarchy.vue"
 
 const routes = [
+  { 
+    path: '/hirarchy',
+    name: "hirarchy",
+    component: Hirarchy
+  },
   { 
     path: '/legacy',
     name: "legacy",

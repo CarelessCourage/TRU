@@ -5,6 +5,10 @@ import { useInterval } from '@vueuse/core'
 import { useRouter } from 'vue-router'
 import { unwrap } from "../store/anim.js"
 
+import imgHerbert from "../assets/essays/herbert.png"
+import imgJosef from "../assets/essays/josef.jpeg"
+import imgWarde from "../assets/essays/warde.jpeg"
+
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation } from 'vue3-carousel';
 
@@ -17,35 +21,47 @@ watch(unwrap, () => {
 
 const boxes = [
   {
-    title: "Frank Herbert - on typography",  
-    quote: "an age of science has come, the artist has been motivated to open his mind to the new forces that shape our lives",
+    img: imgHerbert,
+    title: "On typography",  
+    author: "Herbert Bayer",
+    quote: "the artist has been motivated to open his mind to the new forces that shape our lives",
     component: 'herbert',
   },
   {
-    title: "Josef Müller-Brockmann - Grid Philosophy",   
-    quote: "Working with the grid system means submitting to laws of universal validity. The use of the grid system implies...",
+    img: imgJosef,
+    title: "Grid Philosophy", 
+    author: "Josef Muller-Brockmann",  
+    quote: "Working with the grid system means submitting to laws of universal validity",
     component: 'josef',
   },
   {
-    title: "Beatrice Ward - what is typography",  
-    quote: "the most important thing about type is that it conveys thought, ideas, images from one mind to other minds",
+    img: imgWarde,
+    title: "What is typography",
+    author: "Beatrice Ward",
+    quote: "the most important thing about type is that it conveys thought from one mind to other minds",
     component: 'info',
   },
   {
-    title: "Frank Herbert - on typography", 
-    quote: "an age of science has come, the artist has been motivated to open his mind to the new forces that shape our lives",
+    img: imgHerbert,
+    title: "On typography",  
+    author: "Herbert Bayer",
+    quote: "the artist has been motivated to open his mind to the new forces that shape our lives",
     component: 'herbert',
   },
   {
-    title: "Josef Müller-Brockmann - Grid Philosophy",   
-    quote: "Working with the grid system means submitting to laws of universal validity. The use of the grid system implies...",
+    img: imgJosef,
+    title: "Grid Philosophy", 
+    author: "Josef Muller-Brockmann",  
+    quote: "Working with the grid system means submitting to laws of universal validity",
     component: 'josef',
   },
   {
-    title: "Beatrice Ward - what is typography",  
-    quote: "the most important thing about type is that it conveys thought, ideas, images from one mind to other minds",
+    img: imgWarde,
+    title: "What is typography",
+    author: "Beatrice Ward",
+    quote: "the most important thing about type is that it conveys thought from one mind to other minds",
     component: 'info',
-  },
+  }
 ]
 
 let breakpoints = {
@@ -98,10 +114,8 @@ function clickUp(box) {
       :items-to-show="3.06" 
       :breakpoints="breakpoints"
       :wrap-around="true" 
-      snapAlign="end" 
-      :autoplay="false" 
+      snapAlign="end"  
       :transition="300"
-      pauseAutoplayOnHover="true"
       ref="car"
     >
 
@@ -112,9 +126,9 @@ function clickUp(box) {
         @mouseup="clickUp(box)"
       >
         <div class="carousel__item">
-          <p class="title details">{{box.title}}</p>
-          <h3>{{box.quote}}</h3>
-          <p class="redirect">- read more</p>
+          <p class="">{{box.title}}</p>
+          <h3 class="pullquote">{{box.quote}}</h3>
+          <p class="redirect">by {{box.author}}</p>
         </div>
       </Slide>
 
@@ -164,21 +178,40 @@ function clickUp(box) {
     pointer-events: none;
   }
 
+  .pullquote::after {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+
+  .pullquote::before {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+
+  .pullquote::after, .pullquote::before {
+    transition: 0.4s ease-in-out;
+  }
+
   &:hover {
     opacity: 1 !important;
-    & > *:not(p) {
+    .pullquote {
       font-variation-settings: 
-        "wght" 600, 
+        "wght" 900, 
         "wdth" 80, 
         "CNTR" 0;
     }
-    p.redirect {
-      transform: scale(2) translate(-0em, 0.4em);
+
+    .pullquote::after, .pullquote::before {
+      transform: translateX(0px) scale(1.3);
       opacity: 0.1;
-      font-variation-settings: 
-        "wght" 900, 
-        "wdth" 200, 
-        "CNTR" 0;
+    }
+
+    p.redirect {
+      //opacity: 0.1;
+     // font-variation-settings: 
+     //   "wght" 900, 
+     //   "wdth" 200, 
+     //   "CNTR" 0;
     }
   }
 }
@@ -221,8 +254,10 @@ function clickUp(box) {
   //transform: scale(0.5) translateY(-0px);
 }
 .carousel__slide--active > .carousel__item {
-  //transform: scale(0.75) translate(-180px);
-  //transform: scale(1) translateY(-17%);
-    opacity: 1;
+  opacity: 1;
+  .pullquote::after, .pullquote::before {
+    transform: translateX(0px);
+    opacity: 0.1;
+  }
 }
 </style>
