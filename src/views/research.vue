@@ -18,32 +18,15 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
 <template>
 <PaperWrapper>
   <div class="infoxxx">
-    <h2 class="title">{{store.research.title}}</h2>
+    <h2 class="title" data-speed="1.2">{{store.research.title}}</h2>
+    <h2 class="title" data-speed="1.1">{{store.research.title}}</h2>
+    <h1 class="title" data-speed="0.9">{{store.research.title}}</h1>
+    <h1 class="" data-speed="0.7">{{store.research.title}}</h1>
     <img :src="store.research.img" alt="{{store.research.title}}" data-speed="1.2" />
     
-    <div class="contentx">
-      <p>
-        Compiling and curating collections of typographic research and resources; 
-        celebrating the history of type and the cutting edge of type on the web
-        Compiling and curating collections of typographic research and resources; 
-        celebrating the history of type and the cutting edge of type on the web
-      </p>
-    </div>
-
-    <div class="contentx two">
-      <h4>
-        Compiling and curating collections of typographic research and resources; 
-        celebrating the history of type and the cutting edge of type on the
-      </h4>
-    </div>
 
     <div class="contentx three">
-      <p>
-        Compiling and curating collections of typographic research and resources; 
-        celebrating the history of type and the cutting edge of type on the web
-        Compiling and curating collections of typographic research and resources; 
-        celebrating the history of type and the cutting edge of type on the web
-      </p>
+      <p>{{store.research.abstract}}</p>
 
       <div class="curWrapper" data-speed="0.8">
         <CurateBtnPanel :item="store"/>
@@ -88,7 +71,7 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
   .title {
     transform: scale(3);
     transform-origin: top left;
-    opacity: 0.1;
+    opacity: 0.05;
     padding-bottom: 1em;
 
     grid-column: span 2;
@@ -109,13 +92,6 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
     position: relative;
     z-index: -1;
 
-    @media (max-width: 750px) { 
-      grid-column: span 2;
-    }
-  }
-
-  h3 {
-    grid-column: span 5;
     @media (max-width: 750px) { 
       grid-column: span 2;
     }

@@ -1,6 +1,6 @@
 import Cotypefoundry from "../assets/instagram/cotypefoundry.png";
 import Bradmead from "../assets/instagram/bradmead.png";
-import Intervaltype from "../assets/instagram/Intervaltype.png";
+import Intervaltype from "../assets/instagram/intervaltype.png";
 import Watknap from "../assets/instagram/watknap.png";
 import TheSatelliteExhibitions from "../assets/instagram/TheSatelliteExhibitions.png";
 import AntimonopolyCompliance from "../assets/instagram/AntimonopolyCompliance.png";
