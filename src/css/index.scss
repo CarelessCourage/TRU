@@ -26,7 +26,7 @@ h1, h2, h3, p.details, button {
 h1 {
   text-transform: uppercase;
   line-height: 0.9;
-  font-size: clamp(2rem, 6vw, 6rem);
+  font-size: clamp(2.2rem, 6vw, 6rem);
   letter-spacing: -3px;
   font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 10;
 }
@@ -41,7 +41,7 @@ h1.element {
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.9rem, 12vw, 2.5rem);
   line-height: 1.2;
   font-variation-settings: "wght" 900, "wdth" 100, "CNTR" 40;
   //text-transform: capitalize;
@@ -102,7 +102,7 @@ h3.pullquote {
 
 h4 {
   font-size: 0.9rem;
-  //font-variation-settings: "wght" 300, "wdth" 100, "CNTR" 40;
+  font-variation-settings: "wght" 600, "wdth" 200, "CNTR" 40;
 }
 
 p, button {

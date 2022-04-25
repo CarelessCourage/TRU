@@ -25,7 +25,7 @@ function click(index = 0) {
     <div class="content padding essays">
       <div class="essay-banner">
         <h1>Essays</h1>
-        <p>A collection of essays related to tpography. <br>
+        <p>A collection of essays related to typography. <br>
           Each essay is hardcoded to let each artickle be uniqe</p>
         <div class="ocean">
           <TextOcean/>

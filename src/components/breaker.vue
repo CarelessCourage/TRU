@@ -48,7 +48,7 @@ onMounted(() => {
 <template>
 <div class="breaker" @click="setGsap">
   <div class="cap" ref="cap" data-speed="1.3">
-    <h1 class="element" data-speed="0.5">breaks</h1>
+    <h1 class="element" data-speed="0.5">breathe</h1>
   </div>
   <div class="base">
     <div class="text" data-speed="0.4">

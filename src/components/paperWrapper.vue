@@ -73,8 +73,8 @@ function setScrollSmooth() {
 
 <template>
 <div id="smooth-wrapper">
-    <div id="smooth-content">
-      <div class="noPaper" ref="page" v-if="props.disablePaper">
+  <div id="smooth-content">
+      <div class="noPaper" ref="page" v-if="disablePaper" :style="'filter: invert(' + velocity + ') hue-rotate(' + velocity * 100 + 'deg);'">
         <slot></slot>
       </div>
       <div class="simpleWrapper" :style="'filter: invert(' + velocity + ') hue-rotate(' + velocity * 100 + 'deg);'" v-else>
