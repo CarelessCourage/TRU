@@ -51,6 +51,8 @@ function sortClick() {
   position: relative;
   margin-bottom: var(--marginxx);
 
+  --ms-radius: 0px;
+
   .flex > svg,
   .flex > i,
   .flex > .i {
