@@ -53,7 +53,7 @@ const {width, height, left, top} = toRefs(tileDims)
 
     z-index: 2000;
     overflow: visible;
-    transition: all 0.8s ease-in-out;
+    transition: all 0.2s ease-in-out;
     h3 {color: var(--background); opacity: 0;}
     .yellow {opacity: 0;}
   }
