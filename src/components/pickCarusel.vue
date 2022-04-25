@@ -5,9 +5,7 @@ import { useInterval } from '@vueuse/core'
 import { useRouter } from 'vue-router'
 import { unwrap } from "../store/anim.js"
 
-import imgHerbert from "../assets/essays/herbert.png"
-import imgJosef from "../assets/essays/josef.jpeg"
-import imgWarde from "../assets/essays/warde.jpeg"
+import essays from "../store/essays.js"
 
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation } from 'vue3-carousel';
@@ -19,50 +17,6 @@ watch(unwrap, () => {
   }
 })
 
-const boxes = [
-  {
-    img: imgHerbert,
-    title: "On typography",  
-    author: "Herbert Bayer",
-    quote: "the artist has been motivated to open his mind to the new forces that shape our lives",
-    component: 'herbert',
-  },
-  {
-    img: imgJosef,
-    title: "Grid Philosophy", 
-    author: "Josef Muller-Brockmann",  
-    quote: "Working with the grid system means submitting to laws of universal validity",
-    component: 'josef',
-  },
-  {
-    img: imgWarde,
-    title: "What is typography",
-    author: "Beatrice Ward",
-    quote: "the most important thing about type is that it conveys thought from one mind to other minds",
-    component: 'info',
-  },
-  {
-    img: imgHerbert,
-    title: "On typography",  
-    author: "Herbert Bayer",
-    quote: "the artist has been motivated to open his mind to the new forces that shape our lives",
-    component: 'herbert',
-  },
-  {
-    img: imgJosef,
-    title: "Grid Philosophy", 
-    author: "Josef Muller-Brockmann",  
-    quote: "Working with the grid system means submitting to laws of universal validity",
-    component: 'josef',
-  },
-  {
-    img: imgWarde,
-    title: "What is typography",
-    author: "Beatrice Ward",
-    quote: "the most important thing about type is that it conveys thought from one mind to other minds",
-    component: 'info',
-  }
-]
 
 let breakpoints = {
   0: {
@@ -120,7 +74,7 @@ function clickUp(box) {
     >
 
       <Slide 
-        v-for="(box, index) in boxes" 
+        v-for="(box, index) in essays" 
         :key="index" 
         @mousedown="clickDown"
         @mouseup="clickUp(box)"

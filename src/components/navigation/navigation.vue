@@ -20,14 +20,11 @@ onMounted(() => {
       <router-link :to="{ name: 'home'}">
        <h2 class="item" data-slide>Home</h2>
       </router-link>
-      <router-link :to="{ name: 'info'}">
+      <router-link :to="{ name: 'essays'}">
         <h2 class="item" data-slide>Essays</h2>
       </router-link>
-      <router-link :to="{ name: 'artickle'}">
-        <h2 class="item" data-slide>Research</h2>
-      </router-link>
-      <router-link :to="{ name: 'artickle'}">
-        <h2 class="item" data-slide>Resources</h2>
+      <router-link :to="{ name: 'archive'}">
+        <h2 class="item" data-slide>Archive</h2>
       </router-link>
     </div>
   </div>

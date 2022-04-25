@@ -75,6 +75,7 @@ html {
   background: var(--background);
   max-width: 100vw;
   overflow-x: hidden;
+  transition: filter 0.4s ease-in-out;
   //filter: invert(1) hue-rotate(90deg);   
 }
 

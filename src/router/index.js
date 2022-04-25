@@ -8,8 +8,14 @@ import Research from "../views/research.vue"
 import Herbert from "../views/herbert.vue"
 import Josef from "../views/josef.vue"
 import Hirarchy from "../views/hirarchy.vue"
+import Essays from "../views/essays.vue"
 
 const routes = [
+  { 
+    path: '/essays',
+    name: "essays",
+    component: Essays
+  },
   { 
     path: '/hirarchy',
     name: "hirarchy",

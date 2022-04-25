@@ -31,6 +31,7 @@ useFitt("#fitty");
   //position: fixed;
   z-index: 0;
   opacity: 0.2;
+  pointer-events: none;
 }
 
 #oceanWrapper {
