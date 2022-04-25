@@ -40,11 +40,11 @@ export let array = [
   {
     tags: ["Accademic"],
     userTags: [],
-    title: "Capturing Readers' Attention by Means of Typographical Cuing Strategies", 
-    url: "https://www.jstor.org/stable/44418459", 
-    img: "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
-    datetime: "1978-01-01",
-    abstract: ""
+    title: "Approaches to applying spacing methods in seriffed and sans-serif typeface design", 
+    url: "http://www.fermello.org/FernandoMello_essay.pdf", 
+    img: "https://images.unsplash.com/photo-1610128980054-68d94619e243?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
+    datetime: "2007-01-01",
+    abstract: "This essay intends to discuss briefly some existing spacing methods and apply them in seriffed and sans-serif designs. The first part will rapidly present some important optical concepts to correct spacing of letters. The second part is concerned with presenting the results of applying some of these spacing methods to seriffed and sans-serif typefaces"
   },
   {
     tags: ["Accademic"],
@@ -53,7 +53,7 @@ export let array = [
     url: "https://psycnet.apa.org/record/1941-01004-000", 
     img: "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
     datetime: "1940-01-01",
-    abstract: ""
+    abstract: "Subtitled A manual for typographers, printers and advertisers, this book is based on 12 years of research involving speed of reading tests given to 33,031 persons. It deals with the relationship between legibility in the ordinary reading situation and such typographical factors as type style, size, leading, width of line and of margins, columnar arrangement, color of print and of background, and printing surface. "
   },
   {
     tags: ["Accademic"],
@@ -62,7 +62,7 @@ export let array = [
     url: "https://psycnet.apa.org/doiLanding?doi=10.1037%2F0022-0663.71.2.197", 
     img: "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
     datetime: "1979-01-01",
-    abstract: ""
+    abstract: "Written sentences often contain several meaningful components (e.g., causes and effects or events in a sequence). Preliminary studies of technical documents showed that typographically segmenting these components improved raters' judgments of the comprehensibility of the information. In the present paper, this segmentation notion is generalized, suggesting that phrase segmentation and indentation can be used to facilitate comprehension. "
   },
   {
     tags: ["Accademic"],
@@ -71,7 +71,7 @@ export let array = [
     url: "https://www.tandfonline.com/doi/abs/10.1080/03610739408253954",
     img: "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
     datetime: "2007-01-01",
-    abstract: ""
+    abstract: "The issues in typographical design that inJuence readability in an aging population are explored. The traditional response to age-related changes in vision has been “bigger is better,” but we explore other major variables and vocabulary associated with page layout and design, including type classification and readability, justijcation, traditional rules of page composition, and issues of word forms versus character strategies. Other research areas that should be explored are also considered."
   },
   {
     tags: ["Accademic"],
@@ -80,7 +80,7 @@ export let array = [
     url: "https://www.researchgate.net/publication/292302625_Typography_and_research-led_practice",
     img: "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
     datetime: "2014-01-01",
-    abstract: ""
+    abstract: "Typographic design practice continues to evolve by making use of theory, research and analysis in a design process that could lead to more effective visual communication. This includes knowledge available in physiology, psychology and neurology concerning the way we see, the way we read, the way the brain interprets the visual word, and the way that the brain is structured by its experience through learning and the culture of reading. This study will acknowledge that typography functions within cultural and aesthetic expectations that often include considerations to social, aesthetic and human factors."
   },
   {
     tags: ["Accademic"],
@@ -89,7 +89,7 @@ export let array = [
     url: "https://eprints.whiterose.ac.uk/82895/", 
     img: "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
     datetime: "2014-01-01",
-    abstract: ""
+    abstract: "his paper provides a comprehensive review of literature on the legibility of printed text in order to provide informed guidance on the design and preparation of typographic materials. To this end, experimental findings are taken into account, as well as the perspective of typographers, graphic designers, and authors. First, the typographic features of text are reviewed and illustrated individually to identify all the features that specifically characterise text layouts. It is emphasised, however, that the various typographic features should be selected in relation to each other, and that it is the combination and manipulation of all these typographic features as a group that makes the text legible. Studies are then reviewed and illustrated on the typographic structure of text as a whole. This information will prove useful to anyone involved in the development of typographic materials, including typographic and graphic designers, teachers and students."
   },
   {
     tags: ["Accademic"],
@@ -98,7 +98,7 @@ export let array = [
     url: "https://core.ac.uk/display/46564170?source=2", 
     img: "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
     datetime: "2016-01-01",
-    abstract: ""
+    abstract: "An experimental study provided evidence that text layout affects performance when reading text to search for specific information under time pressure in an examination-type situation. The present paper reports a second experimental study conducted to ascertain whether this effect extends to similar academic reading materials and situations that, contrary to examinations, are performed under no time pressure. Three layouts were used for comparison, which replicated real-life examination materials and represented three distinct levels of legibility. The results revealed that text layout affects performance under conditions of search reading even when time pressure is absent. Moreover, participants performed better with the layout conforming to legibility guidelines and considered this layout to be the easiest to use and the most attractive. The outcomes from this study will prove useful to those involved in the development of written materials used in academia such as textbooks, journal articles, magazines, and tests"
   },
   {
     tags: ["Accademic"],

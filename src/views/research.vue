@@ -18,10 +18,10 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
 <template>
 <PaperWrapper>
   <div class="infoxxx">
-    <h2 class="title" data-speed="1.2">{{store.research.title}}</h2>
-    <h2 class="title" data-speed="1.1">{{store.research.title}}</h2>
-    <h1 class="title" data-speed="0.9">{{store.research.title}}</h1>
-    <h1 class="" data-speed="0.7">{{store.research.title}}</h1>
+    <h2 class="title x" data-speed="1.2">{{store.research.title}}</h2>
+    <h2 class="title x" data-speed="1.1">{{store.research.title}}</h2>
+    <h1 class="title x" data-speed="0.9">{{store.research.title}}</h1>
+    <h1 class="t" data-speed="0.7">{{store.research.title}}</h1>
     <img :src="store.research.img" alt="{{store.research.title}}" data-speed="1.2" />
     
 
@@ -29,7 +29,7 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
       <p>{{store.research.abstract}}</p>
 
       <div class="curWrapper" data-speed="0.8">
-        <CurateBtnPanel :item="store"/>
+        <CurateBtnPanel :item="store.research"/>
       </div>
     </div>
   </div>
@@ -37,6 +37,10 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
 </template>
 
 <style lang="scss">
+
+h1.t {
+  grid-column: span 6;
+}
 
 .infoxxx .curateBtnPanel {
   margin-top: 4em;
@@ -69,7 +73,11 @@ const img = "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=
   }
 
   .title {
-    transform: scale(3);
+    &.x {
+      position: absolute;
+    }
+
+    transform: scale(6);
     transform-origin: top left;
     opacity: 0.05;
     padding-bottom: 1em;
