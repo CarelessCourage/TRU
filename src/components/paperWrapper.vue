@@ -26,7 +26,18 @@ onMounted(() => {
   }
   
   setScrollSmooth()
-  setScrollSmoothActiveUpdate()
+  //setScrollSmoothActiveUpdate()
+
+  document.fonts.ready.then(function () {
+    console.log('All fonts in use by visible text have loaded.');
+    setScrollSmooth()
+  });
+
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+    setScrollSmooth()
+    console.log("refresh")
+  }, 3000)
 })
 
 function click(e) {
