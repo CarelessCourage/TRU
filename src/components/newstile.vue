@@ -18,7 +18,7 @@ onMounted(() => {
           <h1 data-slide>News</h1>
           <p data-line>
             Here are the latest posts we have published as of today. 
-            We regularly post artickles and tutorials on the topics of typography. 
+            We regularly post articles and tutorials on the topics of typography. 
             Subscribe yo our newsletter to be updated on new posts and stay tuned 
             for more content related to typography.
           </p>

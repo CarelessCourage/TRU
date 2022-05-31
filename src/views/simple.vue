@@ -66,7 +66,7 @@ onMounted(() => {
       
 
       <Resources v-if="false">
-        <h1>Accademic Research</h1>
+        <h1>Academic Research</h1>
         <p>
           This is a list of research publications related to typography. 
           It is gathered by TRU users and curated by the TRU team. 

@@ -79,7 +79,7 @@ function over(index) {
 
 <template>
   <div class="explainer">
-    <h1>Accademic Research</h1>
+    <h1>Academic Research</h1>
   </div>
   <div class="explainertwo" data-speed="0.9">
     <p>
